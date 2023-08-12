@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Concert+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Francois+One&display=swap" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<title>Cerita Dongeng Kanak-kanak</title>
+    <link rel="stylesheet" href="style.css">
+    <style> 
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+		#home {
+			position: absolute;
+			top: 10px;
+			right: 2.8%;
+			font-size: 45px;
+			color: black;
+			z-index: 1; /* Atur nilai z-index untuk membuat ikon di atas konten */
+			cursor: pointer; /* Ganti kursor saat diarahkan ke ikon */
+		}
+        .scene {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-size: cover;
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+        .narration {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        .navigation {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+        .navigation a {
+            padding: 10px 20px;
+            background-color: #ffff80;
+            color: #000;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+        .navigation a:hover {
+            background-color: #ffcc00;
+        }
+		#scene1{
+			background-size: 100% 100%;
+		}
+
+		#h2{
+		background-color: white;
+		color: black;
+		}
+
+		.narration{
+		/* position:absolute; */
+		background-color: #ffff80; 
+		width: 350px;
+		font-size: 20px;
+		font-family: 'Concert One', 'cursive';
+		padding-left: 4px;
+		/* padding-right: 20px; */ 
+		padding-top: 0px;
+		padding-bottom: 0px;
+		top:50px;
+		left:17%;
+		transform: translateX(-49%); 
+		display: flex;
+		justify-content:center;
+		align-items:center;
+		border:3px solid #ffff80;
+		border-radius: 40px;
+		}
+
+		.narration.b{
+		/* position:absolute; */
+		background-color: #ffff80; 
+		width: 250px;
+		font-size: 15px;
+		font-family: 'Concert One', 'cursive';
+		padding-left: 0px;
+		padding-right: 0px;
+		padding-top: 5px;
+		padding-bottom: 5px;
+		top:50px;
+		left:980px;
+		transform: translateX(2%);
+		display: flex;
+		border:3px solid #ffff80;
+		} 
+
+
+		#scene2{
+			background-size: 100% 100%;
+		}
+
+		#scene3{
+			background-size: 100% 100%;
+		}
+
+		#scene4{
+			background-size: 100% 100%;
+		}
+		#myVideo {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		left:0;
+		top:0;
+		width: auto; 
+		height: auto;
+		}
+
+		#scene5{
+			background-size: 100% 100%;
+		}
+
+		#scene6{
+			background-size: 100% 100%;
+		}
+
+		#scene7{
+			background-size: 100% 100%;
+		}
+
+		#scene8{
+			background-size: 100% 100%;
+		}
+
+		#scene9{
+			background-size: 100% 100%;
+		}
+
+		.navigation {
+			margin: 0 5px;
+			padding: 10px 20px;
+			margin-left: -420px;
+			margin-right: 80px;
+			margin-top: 100px;
+			background-color: yellow;
+			border: 2px black;
+			font-size: 15px;
+			font-family: 'Francois One', sans-serif;
+			cursor: pointer;
+			position: relative;
+			text-align: center;
+			border-radius: 15px;
+			box-shadow: 0 4px #999;
+        }
+
+		.navigation.ya {
+			margin: 0 5px;
+			padding: 10px 20px;
+			margin-left: -420px;
+			margin-right: 80px;
+			margin-top: 100px;
+			background-color: greenyellow;
+			border: 2px black;
+			font-size: 15px;
+			font-family: 'Francois One', sans-serif;
+			cursor: pointer;
+			position: relative;
+			text-align: center;
+			border-radius: 15px;
+			box-shadow: 0 4px #999;
+        }
+/* 
+
+        /* Mengatur gambar burung */
+        .burung {
+            position: absolute;
+            top: 80px;
+            width: 100px;
+            height: 100px;
+            background-image: url('images/images_iris/burungterbang.gif'); /* Ganti dengan path gambar burung */
+            background-size: cover;
+            animation: burung-animasi 4s linear infinite;
+        }
+
+        /* Membuat animasi burung bergerak */
+        @keyframes burung-animasi {
+            0% {
+                left: 100%;
+            }
+            100% {
+                left: -100px;
+            }
+        }
+
+		@keyframes smallBig{
+        0%, 100% {
+            transform: scale(0.98);
+        }
+        50% {
+            transform: scale(1);
+        }
+    }
+
+	.popup {
+	position: fixed;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.5);
+	color: #f1f1f1;
+	width: 100%;
+	height:100%;
+	padding: 20px;
+	}
+
+	.irispopup {
+		margin-top: 200px;
+		margin-bottom: -380px;
+		margin-right: 200px;
+		margin-left: 220px;
+	}
+	.bungapopup {
+		margin-top: -130px;
+		margin-bottom: 5px;
+		margin-right: 800px;
+		margin-left: 620px;
+	}
+
+	.dialog-box {
+		border: 1px solid black;
+		background-color: #f9f9f9;
+		width: 340px;
+		font-size: 15px;
+		font-family: 'Concert One', 'cursive';
+		color: black;
+		padding: 3px;
+		margin-top: -80px;
+		margin-bottom: 5px;
+		margin-right: 550px;
+		margin-left: 400px;
+		position: relative;
+		animation-name: dialogAnimation;
+		animation-duration: 1s;
+		animation-timing-function: ease-in-out;
+		animation-iteration-count: infinite;
+		}
+
+		@keyframes dialogAnimation {
+		0% {
+			transform: scale(1);
+		}
+		50% {
+			transform: scale(1.1);
+		}
+		100% {
+			transform: scale(1);
+		}
+		}
+
+		/*buttonpopup*/
+	
+	a
+	{
+		position: absolute;
+		top: 50%;
+		left: 60%;
+		transform: translate(-50%, -50%);
+		width: 180px;
+		height: 50px;
+		background: #232323;
+		text-decoration: none;
+		text-transform: uppercase;
+		text-align: center;
+		line-height: 50px;
+		color: #FF0;
+		font-size: 20px;
+		font-family: verdana;
+		letter-spacing: 4px;
+	/*    border-radius: 20px; */
+	}
+
+	a:before,
+	a:after,
+	span:before,
+	span:after
+	{
+		content: '';
+		position: absolute;
+		width: 10px;
+		height: 10px;
+		background: #FF0;
+		transition: 1s;
+		mix-blend-mode: hue;
+	}
+
+	a:before
+	{
+		top: -2px;
+		left: -2px
+	}
+	a:after
+	{
+		top: -2px;
+		right: -2px;
+	}
+	span:before
+	{
+		bottom: -2px;
+		left: -2px
+	}
+	span:after
+	{
+		bottom: -2px;
+		right: -2px
+	}
+
+	a:hover:before,
+	a:hover:after,
+	a:hover span:before,
+	a:hover span:after
+	{
+		width: calc( 180px/2 );
+		height: calc( 50px/2 )
+	}
+/*buttonpopupend*/
+
+.navigation.b {
+  position: center;
+  font-size: 30px;
+  padding: 10px 20px;
+  left:1000px;
+  right:-400px;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: yellow;
+  color: black;
+  border: none;
+  outline: none;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
+}
+
+.navigation.b:active {
+  transform: scale(0.95);
+}
+.achievement{
+        height: 12%;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1;
+        position: absolute;
+    }
+    .logo{
+        margin-top: -15px;
+        width: 100px;
+        margin-left: 30px;
+    }
+    </style>
+</head>
+<body onload="myFunction()" style="margin:0;">
+    <div class="achievement">
+        <img src="images/logo.png" class="logo">
+        <div class="fa fa-home" id="home" style="font-size:48px;"  onclick="home()"></div>
+    </div>
+	<div class="container"></div>
+    <div id="burung"></div>
+    <div id="scene1" class="scene active" style="background-image: url('images/images_iris/scene1.gif'); ">
+		<center><h2 style="width: 350px; font-family: 'Lilita One', cursive; color: whitesmoke; font-size: 30px; letter-spacing: 0.5px; -webkit-text-stroke-width: 0.5px;-webkit-text-stroke-color: black; animation: smallBig 2s infinite;">IRIS DAN BUNGA AJAIB</h2></center>
+		<div class="narration">
+            <p>Suatu hari ketika sedang bermain di taman permainan.</p>
+		</div>
+         <button class ="navigation" onclick="nextScene()">Seterusnya</button>
+    </div>
+
+    <div id="scene2" class="scene" style="background-image: url('images/images_iris/scene2.gif');" >
+		<center><h2 style="width: 350px; font-family: 'Lilita One', cursive; color: whitesmoke; font-size: 30px; letter-spacing: 0.5px; -webkit-text-stroke-width: 0.5px;-webkit-text-stroke-color: black; animation: smallBig 2s infinite;">IRIS DAN BUNGA AJAIB</h2></center>
+		<div class="narration">
+            <p>Iris terjumpa bunga yang bersinar.</p>
+        </div>
+        
+            <button class ="navigation" onclick="nextScene()">Seterusnya</button>
+        
+    </div>
+
+    <div id="scene3" class="scene" style="background-image: url('images/images_iris/scene3.gif');">
+		<center><h2 style="width: 350px; font-family: 'Lilita One', cursive; color: whitesmoke; font-size: 30px; letter-spacing: 0.5px; -webkit-text-stroke-width: 0.5px;-webkit-text-stroke-color: black; animation: smallBig 2s infinite;">IRIS DAN BUNGA AJAIB</h2></center>		<div class="narration">
+            <p>Alangkah terkejutnya Iris, apabila bunga itu bercakap dengannya.</p>
+        </div>
+		<button class ="navigation" onclick="nextScene()">Seterusnya</button>
+		 <div id="dialog" class="dialog">
+        </div>
+    </div>
+
+    <div id="scene4" class="scene">
+		<video autoplay muted loop id="myVideo"  style="width: 100%; height: 100%; object-fit: fill;">
+			<source src="images/images_iris/scene4.mp4" type="video/mp4"> 
+			Your browser does not support HTML5 video.
+		  </video>
+		  <center><h2 style="width: 350px; font-family: 'Lilita One', cursive; color: whitesmoke; font-size: 30px; letter-spacing: 0.5px; -webkit-text-stroke-width: 0.5px;-webkit-text-stroke-color: black; animation: smallBig 2s infinite;">IRIS DAN BUNGA AJAIB</h2></center>	
+		  <div class="narration">
+            <p>Iris mendengar dengan baik setiap arahan.</p>
+        </div>	
+		<button class ="navigation" onclick="nextScene()">Seterusnya</button>
+        </div>
+		
+		<div id="scene5" class="scene" style="background-image: url('images/images_iris/scene5.gif');">
+			<center><h2 style="width: 350px; font-family: 'Lilita One', cursive; color: whitesmoke; font-size: 30px; letter-spacing: 0.5px; -webkit-text-stroke-width: 0.5px;-webkit-text-stroke-color: black; animation: smallBig 2s infinite;">IRIS DAN BUNGA AJAIB</h2></center>			
+			<div class="popup">
+				<image src="images/images_iris/Irisberfikir.gif" type="gif" class="irispopup">
+				<div class="dialog-box">
+					<p> Iris : Adakah anda mahu membantu Bunga Ajaib?</p>
+				  </div>	
+			</div>
+				<a  onclick="nextScene()"><span></span>YA</a>
+			</div>
+
+			<div id="scene6" class="scene" style="background-image: url('images/images_iris/scene6.gif');">
+				<center><h2 style="width: 350px; font-family: 'Lilita One', cursive; color: whitesmoke; font-size: 30px; letter-spacing: 0.5px; -webkit-text-stroke-width: 0.5px;-webkit-text-stroke-color: black; animation: smallBig 2s infinite;">IRIS DAN BUNGA AJAIB</h2></center>				
+				<button id = "vibratingButton" class ="navigation b" onclick="Seterus()">MULA</button>
+			</div>
+			
+
+					<audio src="lagu2.mp3" class="song" style="margin-top: 530px; margin-left:950px; " controls autoplay >
+						Your browser does not support the audio element.
+					</audio>
+					<audio id="buttonSound">
+						<source src="audio3.mp3" type="audio/mpeg">
+						Your browser does not support the audio element.
+					  </audio>
+					
+    <script>
+	// variables
+	var popup = document.getElementById("popup");
+	var scenes = document.getElementsByClassName("scene");
+		var currentScene = 0;
+
+		// function to switch to next scene
+		function nextScene() {
+			scenes[currentScene].classList.remove("active");
+			currentScene++;
+			if (currentScene == 5)
+			{
+				showPopup();
+			}
+			if (currentScene >= scenes.length) {
+				currentScene = 0;
+				const buttonSound = document.getElementById('buttonSound');
+				buttonSound.play();
+			}
+			scenes[currentScene].classList.add("active");
+			const buttonSound = document.getElementById('buttonSound');
+			buttonSound.play();
+		}
+
+		function Seterus() {
+      		window.location.href = "game.html";
+			const buttonSound = document.getElementById('buttonSound');
+			buttonSound.play();
+		}	
+
+		function home() {
+      		window.location.href = "character.html";
+		}	
+
+	function showPopup() {
+    //  popup.style.display = "block";
+
+    // Set the popup to disappear after 5 seconds
+    setTimeout(function() {
+        hidePopup();
+    }, 5000);
+	}
+
+	// Function to hide the popup
+	function hidePopup() {
+		popup.style.visibility = "hidden";
+	}
+
+	// Show the popup when the page loads
+	// showPopup();
+    
+	let intervalId;
+
+function vibrateButton() {
+  const button = document.getElementById('vibratingButton');
+  button.style.transform = 'translateY(-2px)';
+  intervalId = setInterval(() => {
+    button.style.transform = (button.style.transform === 'translateY(-2px)') ? 'translateY(2px)' : 'translateY(-2px)';
+  }, 100);
+}
+
+function stopVibrating() {
+  clearInterval(intervalId);
+  const button = document.getElementById('vibratingButton');
+  button.style.transform = 'translateY(0)';
+}
+
+function buttonClicked() {
+  // Add your desired functionality when the button is clicked here
+  // For example, you can add an alert message:
+  alert('Button clicked!');
+}
+
+// Start vibrating the button when the page loads
+vibrateButton();
+
+// Stop vibrating if the button is clicked
+document.getElementById('vibratingButton').addEventListener('click', stopVibrating);
+
+    </script>  
+</body>
+</html>   
