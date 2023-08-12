@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FTA Games</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Luckiest+Guy&family=Rowdies:wght@300;400;700&family=Sigmar&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+</head>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    .container{
+        width: 100%;
+        height: 100vh;
+        background: url('images/menu_bg.png');
+        background-position: center;
+        background-size: cover;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .header{
+        margin-top: 10px;
+        justify-content: center;
+        align-content: center;
+    }
+    .logo{
+        width: 200px;
+    }
+    .games{
+        margin-top: -100px;
+        display: flex;
+        gap: 100px;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    .btn-games img{
+        margin-top: -30px;
+        height: 400px;
+        transition: height 0.3s;
+        cursor: pointer;
+    }
+    .btn-games img:hover{
+        height: 410px;
+    }
+    a{
+        text-decoration: none;
+        text-align: center;
+    }
+    .btn-games.badang h2{
+        margin-left: 60px;
+        color: #FFDD76;
+        font-size: 20px;
+        font-family: 'Sigmar', cursive;
+        user-select: none;
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: #896F23;
+        line-height: 1.2;
+        /*position: absolute;
+        left: 48%;
+        transform: translateX(-50%);*/
+        width: 200px;
+        padding: 5px;
+        margin-top: 90px;
+        background: #FAFDDC;
+        border-radius: 20px;
+        text-align: center;
+        border: 2px solid #DBA914;
+    }
+    .btn-games.iris h2{
+        margin-left: 80px;
+        color: #FFA9A1;
+        font-size: 20px;
+        font-family: 'Sigmar', cursive;
+        user-select: none;
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: #8F2E3E;
+        line-height: 1.2;
+        /*position: absolute;
+        left: 48%;
+        transform: translateX(-50%);*/
+        width: 200px;
+        padding: 5px;
+        margin-top: 90px;
+        background: #FFF3F2;
+        border-radius: 20px;
+        text-align: center;
+        border: 2px solid #F19DAB;
+    }
+    .btn-games {
+        filter: drop-shadow(10px 10px 10px #31343E);
+    }
+    .btn-games.badang:hover {
+        filter: drop-shadow(10px 10px 10px #FFE98D);
+    }
+    .btn-games.iris:hover {
+        filter: drop-shadow(10px 10px 10px #FFA9A1);
+    }
+</style>    
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="images/logo.png" class="logo">
+        </div>
+        <div class="games">
+            <div class="row-badang">
+                <a href="badang-menu.html" class="btn-games badang">
+                    <h2>Bina Ayat<br>bersama Badang</h2>
+                    <img src="images/choose_badang.png">   
+                </a>
+            </div>
+            <div class="row-iris">
+                <a href="narration.html" class="btn-games iris">
+                    <h2>Susun Ayat<br>bersama Iris</h2>
+                    <img src="images/choose_iris.png">   
+                </a>
+            </div>        
+        </div>
+    </div>
+    <script>
+        function playMusicBg() {
+            const bgMusic = new Audio('sounds/bg_musicCut.mp3');
+            setTimeout(() => {
+                bgMusic.play(); 
+                bgMusic.loop = true;
+            }, 10);
+        }
+        playMusicBg();
+    </script>
+</body>
+</html>

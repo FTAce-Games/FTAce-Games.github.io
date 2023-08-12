@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Badang</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Luckiest+Guy&family=Rowdies:wght@300;400;700&family=Sigmar&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+</head>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    .container{
+        width: 100%;
+        height: 100vh;
+        background-position: center;
+        background-size: cover;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .achievement{
+        height: 12%;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1;
+        position: absolute;
+    }
+    .logo{
+        margin-top: 0px;
+        width: 100px;
+        margin-left: 30px;
+    }
+    .home{
+        margin-right: 50px;
+        margin-top: 10px;
+    }
+    #story-background {
+        width: 100%;
+        height: 100vh;  
+        overflow: hidden;   
+    }
+    #story-background img {
+        width: 100%;
+        height: 120%;
+        transition: 1s;
+        margin-top: -60px;
+    }   
+    #badangSmall {
+      position: absolute;
+      left: 50%;
+      bottom: 50px;    
+      transform: translateX(-50%);
+      height: 320px;    
+      -webkit-animation-duration: 1s;
+      animation-duration: 1s;
+      -webkit-animation-fill-mode: both;
+      animation-fill-mode: both;
+      animation-delay: 6s;    
+    }
+
+    @keyframes flash {
+                0%, 50%, 100% {
+                   opacity: 1;
+                }
+                25%, 75% {
+                   opacity: 0;
+                }
+             }
+
+    .flash {
+      animation-name: flash;
+    }
+
+    #circle{
+      width:300px;
+      height:300px;
+      border:0px solid #CCC;
+      position:absolute;
+      top:0; bottom:0; left:0;right:0;
+      margin:auto;
+      border-radius:50%; 
+    }
+    #apple-end1 {
+      position: absolute;
+      top:0; bottom:0; left:0;right:0;
+      overflow:hidden;
+      margin:auto;     
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      background-color: #CB9F17;
+      box-shadow: 0 0 10px 5px #CB9F17; 
+      animation: circle 5s linear infinite;
+      animation-delay: 0s;    
+    }
+
+    #apple-end2 {
+      position: absolute;
+      top:0; bottom:0; left:0;right:0;
+      overflow:hidden;
+      margin:auto;     
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      background-color: #CB9F17;
+      box-shadow: 0 0 10px 5px #CB9F17; 
+      animation: circle 5s linear infinite;
+      animation-delay: 0.5s;
+    }
+
+    #apple-end3 {
+      position: absolute;
+      top:0; bottom:0; left:0;right:0;
+      overflow:hidden;
+      margin:auto;     
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      background-color: #CB9F17;
+      box-shadow: 0 0 10px 5px #CB9F17; 
+      animation: circle 5s linear infinite;
+      animation-delay: 1s;    
+    }
+
+    #apple-end4 {
+      position: absolute;
+      top:0; bottom:0; left:0;right:0;
+      overflow:hidden;
+      margin:auto;     
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      background-color: #CB9F17;
+      box-shadow: 0 0 10px 5px #CB9F17; 
+      animation: circle 5s linear infinite;
+      animation-delay: 1.5s;    
+    }
+
+    #apple-end5 {
+      position: absolute;
+      top:0; bottom:0; left:0;right:0;
+      overflow:hidden;
+      margin:auto;     
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      background-color: #CB9F17;
+      box-shadow: 0 0 10px 5px #CB9F17; 
+      animation: circle 5s linear infinite;
+      animation-delay: 2s;    
+    }
+    
+    #apple-end6 {
+      position: absolute;
+      top:0; bottom:0; left:0;right:0;
+      overflow:hidden;
+      margin:auto;     
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      background-color: #CB9F17;
+      box-shadow: 0 0 10px 5px #CB9F17; 
+      animation: circle 5s linear infinite;
+      animation-delay: 2.5s;
+    }
+    
+    #apple-end7 {
+      position: absolute;
+      top:0; bottom:0; left:0;right:0;
+      overflow:hidden;
+      margin:auto;     
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      background-color: #CB9F17;
+      box-shadow: 0 0 10px 5px #CB9F17; 
+      animation: circle 5s linear infinite;
+      animation-delay: 3s;
+    }
+    
+    #apple-end8 {
+      position: absolute;
+      top:0; bottom:0; left:0;right:0;
+      overflow:hidden;
+      margin:auto;     
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      background-color: #CB9F17;
+      box-shadow: 0 0 10px 5px #CB9F17; 
+      animation: circle 5s linear infinite;
+      animation-delay: 3.5s;
+    }
+    
+    #apple-end9 {
+      position: absolute;
+      top:0; bottom:0; left:0;right:0;
+      overflow:hidden;
+      margin:auto;     
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      background-color: #CB9F17;
+      box-shadow: 0 0 10px 5px #CB9F17; 
+      animation: circle 5s linear infinite;
+      animation-delay: 4s;
+    }
+    
+    #apple-end10 {
+      position: absolute;
+      top:0; bottom:0; left:0;right:0;
+      overflow:hidden;
+      margin:auto;     
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      background-color: #CB9F17;
+      box-shadow: 0 0 10px 5px #CB9F17; 
+      animation: circle 5s linear infinite;
+      animation-delay: 4.5s;
+    }
+
+    @keyframes circle{
+      0%{
+        transform:rotate(0deg)
+                  translate(-135px)
+                  rotate(0deg);
+
+      }
+      100%{
+        transform:rotate(360deg)
+                  translate(-135px)
+                  rotate(-360deg);
+      }
+    }
+    #nextButton {
+      position: fixed;
+      color: #fff;
+      left: 44%;
+      bottom: 3%;
+      width: 150px;
+      height: 50px;
+      text-decoration: none;
+      font-family: 'Rowdies', cursive;
+      background: #FF7018;
+      border: 0;
+      border-radius: 10px;
+      font-size: 25px;
+    }
+
+    #nextButton:hover {
+      color: #FF7018;
+      background: #fff;
+    }
+    #tahniah{
+        position: absolute;
+        width: 500px;
+    }
+</style>    
+<body>
+    <div class="container">
+        <div class="achievement in-games">
+            <img src="images/logo.png" class="logo in-games">
+            <a href="character.html" class="home"><img src="images/home.png" alt=""></a>
+        </div>
+        <div id="circle">
+            <img src="images/images_badang/apple.png" id="apple-end1">
+            <img src="images/images_badang/apple.png" id="apple-end2">
+            <img src="images/images_badang/apple.png" id="apple-end3">
+            <img src="images/images_badang/apple.png" id="apple-end4">
+            <img src="images/images_badang/apple.png" id="apple-end5">
+            <img src="images/images_badang/apple.png" id="apple-end6">
+            <img src="images/images_badang/apple.png" id="apple-end7">
+            <img src="images/images_badang/apple.png" id="apple-end8">
+            <img src="images/images_badang/apple.png" id="apple-end9">
+            <img src="images/images_badang/apple.png" id="apple-end10">
+        </div>
+        <img src="images/character_badang.png" id="badangSmall" class="flash">
+        <img src="images/images_badang/tahniah.png" id="tahniah">
+        <button id="nextButton">Tamat!</button>
+        <div id="story-background"></div>
+    </div>
+    <script>
+        const storyBg = document.getElementById('story-background');
+        const badangSmall = document.getElementById('badangSmall');
+        const appleEnd1 = document.getElementById('apple-end1');
+        const appleEnd2 = document.getElementById('apple-end2');
+        const appleEnd3 = document.getElementById('apple-end3');
+        const appleEnd4 = document.getElementById('apple-end4');
+        const appleEnd5 = document.getElementById('apple-end5');
+        const appleEnd6 = document.getElementById('apple-end6');
+        const appleEnd7 = document.getElementById('apple-end7');
+        const appleEnd8 = document.getElementById('apple-end8');
+        const appleEnd9 = document.getElementById('apple-end9');
+        const appleEnd10 = document.getElementById('apple-end10');
+        const nextButton = document.getElementById('nextButton');
+        const tahniah = document.getElementById('tahniah');
+        const bgImages = ['images/images_badang/badang_bg_1.gif', 'images/images_badang/badang_muscleUp.gif', 'images/images_badang/badang_muscle.gif'];
+
+        tahniah.style.visibility = 'hidden';
+        
+        let indexImage = 0;
+
+        function showImages() {
+          const previousImage = storyBg.querySelector('img');
+          if (previousImage) {
+            previousImage.remove();
+          }
+
+          const imgElement = document.createElement('img');
+          imgElement.src = bgImages[indexImage];
+          storyBg.appendChild(imgElement);
+        }
+        
+        function rotateBg(){
+            
+        }
+
+        function startAnimation() {
+          var cheerSound = new Audio('sounds/cheeringSound.mp3');
+          setTimeout(() => {
+            cheerSound.play();
+          }, 7000);
+          var sparkleSound1 = new Audio('sounds/sparkle.mp3');
+          var sparkleSound2 = new Audio('sounds/sparkle.mp3');
+          var sparkleSound3 = new Audio('sounds/sparkle.mp3');
+          var sparkleSound4 = new Audio('sounds/sparkle.mp3');
+          var sparkleSound5 = new Audio('sounds/sparkle.mp3');
+          var sparkleSound6 = new Audio('sounds/sparkle.mp3');   
+          var sparkleSound7 = new Audio('sounds/sparkle.mp3');   
+          var sparkleSound8 = new Audio('sounds/sparkle.mp3');   
+          var sparkleSound9 = new Audio('sounds/sparkle.mp3');   
+          var sparkleSound10 = new Audio('sounds/sparkle.mp3');      
+          setTimeout(() => {
+            sparkleSound1.play();
+          }, 500);   
+          setTimeout(() => {
+            sparkleSound2.play();
+          }, 1000);   
+          setTimeout(() => {
+            sparkleSound3.play();
+          }, 1500);   
+          setTimeout(() => {
+            sparkleSound4.play();
+          }, 2000);   
+          setTimeout(() => {
+            sparkleSound5.play();
+          }, 2500);    
+          setTimeout(() => {
+            sparkleSound6.play();
+          }, 3000);    
+          setTimeout(() => {
+            sparkleSound7.play();
+          }, 3500); 
+          setTimeout(() => {
+            sparkleSound8.play();
+          }, 4000); 
+          setTimeout(() => {
+            sparkleSound9.play();
+          }, 4500); 
+          setTimeout(() => {
+            sparkleSound10.play();
+          }, 5000);     
+
+          nextButton.style.visibility = 'hidden';
+          setTimeout(() => {
+            appleEnd1.style.animation = 'none';
+            appleEnd2.style.animation = 'none';
+            appleEnd3.style.animation = 'none';
+            appleEnd4.style.animation = 'none';
+            appleEnd5.style.animation = 'none';
+            appleEnd6.style.animation = 'none';
+            appleEnd7.style.animation = 'none';
+            appleEnd8.style.animation = 'none';
+            appleEnd9.style.animation = 'none';
+            appleEnd10.style.animation = 'none';  
+            appleEnd1.style.visibility = 'hidden';
+            appleEnd2.style.visibility = 'hidden';
+            appleEnd3.style.visibility = 'hidden';
+            appleEnd4.style.visibility = 'hidden';
+            appleEnd5.style.visibility = 'hidden';
+            appleEnd6.style.visibility = 'hidden';
+            appleEnd7.style.visibility = 'hidden';
+            appleEnd8.style.visibility = 'hidden';
+            appleEnd9.style.visibility = 'hidden';
+            appleEnd10.style.visibility = 'hidden';  
+          }, 5250);
+          setTimeout(() => {
+            indexImage++;
+            showImages();
+            badangSmall.style.visibility = 'hidden';
+            tahniah.style.visibility = 'visible';  
+          }, 7000);
+          setTimeout(() => {
+            indexImage++;
+            showImages();  
+            nextButton.style.visibility = 'visible';
+          }, 7600);
+        }
+
+        nextButton.addEventListener('click', function () {
+          var clickSound = new Audio('sounds/click2.wav');
+          clickSound.play(); 
+          window.location.href = 'character.html';
+        });
+
+        startAnimation();
+        showImages();
+    </script>
+</body>
+</html>

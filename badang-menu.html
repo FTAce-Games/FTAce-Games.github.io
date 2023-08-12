@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Badang</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Patua+One&family=Rowdies:wght@300&family=Sigmar&display=swap" rel="stylesheet">
+</head>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    .container{
+        width: 100%;
+        height: 100vh;
+        background-position: center;
+        background-size: cover;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .achievement{
+        height: 12%;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1;
+        position: absolute;
+    }
+    .logo{
+        margin-top: 0px;
+        width: 100px;
+        margin-left: 30px;
+    }
+    .home{
+        margin-right: 50px;
+        margin-top: 10px;
+    }
+    h2{
+        color: #FF914D;
+        font-size: 45px;
+        font-family: 'Sigmar', cursive;
+        -webkit-text-stroke-width: 3px;
+        -webkit-text-stroke-color: #fff;
+        user-select: none;
+        margin-right: 50px;
+    }
+    #nextButton {
+        position: fixed;
+        color: #3D1810;
+        right: 15px;
+        bottom: 15px;
+        width: 180px;
+        height: 60px;
+        text-decoration: none;
+        font-family: 'Rowdies', cursive;
+        background: #E8B08B;
+        border: 0;
+        border-radius: 10px;
+        font-size: 25px;
+        cursor: pointer;
+    }
+    #nextButton:hover {
+        color: #E8B08B;
+        background: #3D1810;
+    }
+    #story-image {
+        width: 100%;
+        height: 100%;
+    }
+    #sentence-intro {
+        position: absolute;
+        bottom: 0%;
+        left: 50%;
+        height: 60px;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        background: #E8B08B;
+        padding: 0px 20px 0px 20px;/*top, right, bottom, left*/
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 1px;
+        border: 10px solid #E8B08B;    
+        opacity: 0.9;
+    }
+    #sentence-intro:after {
+        content: "";
+        position: absolute;
+        left: -35px;
+        bottom: -5;
+        width: 0;
+        height: 0;
+        border-right: 35px solid #E8B08B;
+        border-top: 38px solid transparent;
+        border-bottom: 38px solid transparent;
+    }
+    #sentence-intro:before {
+        content: "";
+        position: absolute;
+        right: -35px;
+        bottom: -5;
+        width: 0;
+        height: 0;
+        border-left: 35px solid #E8B08B;
+        border-top: 38px solid transparent;
+        border-bottom: 38px solid transparent;
+    }
+    #story-sentence {
+        color: #3D1810;
+        font-size: 25px;
+        overflow: hidden;
+        border-right: .15em solid #502D16;
+        white-space: nowrap;
+        margin: 0 auto;
+        letter-spacing: .15em; 
+        font-family: 'Patua One', cursive;
+        /*animation: typing 3s steps(20, end), 
+                   blink-caret .75s step-end infinite;*/
+    }
+    @keyframes typing {
+        from { width: 0 }
+        to { width: 100% }
+    }
+
+    @keyframes blink-caret {
+        from, to { border-color: transparent }
+        50% { border-color: #502D16; }
+    }
+    #apple1 {
+        position: absolute;
+        left: 180px;
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        background-color: #CB9F17;
+        box-shadow: 0 0 10px 5px #CB9F17; 
+    }
+    #apple2 {
+        position: absolute;
+        left: 320px;
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        background-color: #CB9F17;
+        box-shadow: 0 0 10px 5px #CB9F17; 
+    }
+    #apple3 {
+        position: absolute;
+        left: 460px;
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        background-color: #CB9F17;
+        box-shadow: 0 0 10px 5px #CB9F17; 
+    }
+    #apple4 {
+        position: absolute;
+        left: 240px;
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        background-color: #CB9F17;
+        box-shadow: 0 0 10px 5px #CB9F17; 
+    }
+    #apple5 {
+        position: absolute;
+        left: 400px;
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        background-color: #CB9F17;
+        box-shadow: 0 0 10px 5px #CB9F17; 
+    }
+    #apple6 {
+        position: absolute;
+        left: 180px;
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        background-color: #CB9F17;
+        box-shadow: 0 0 10px 5px #CB9F17; 
+    }
+    #apple7 {
+        position: absolute;
+        left: 320px;
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        background-color: #CB9F17;
+        box-shadow: 0 0 10px 5px #CB9F17; 
+    }
+    #apple8 {
+        position: absolute;
+        left: 460px;
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        background-color: #CB9F17;
+        box-shadow: 0 0 10px 5px #CB9F17; 
+    }
+    #apple9 {
+        position: absolute;
+        left: 240px;
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        background-color: #CB9F17;
+        box-shadow: 0 0 10px 5px #CB9F17; 
+    }
+    #apple10 {
+        position: absolute;
+        left: 400px;
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        background-color: #CB9F17;
+        box-shadow: 0 0 10px 5px #CB9F17; 
+    }
+    @-webkit-keyframes fall1 {
+        0% {
+            top: 20px;
+        }
+        50% {
+            top: 31%;  
+        }
+        100% {
+            top: 31%;
+        }
+    }
+    @-webkit-keyframes fall2 {
+        0% {
+            top: 20px;
+        }
+        50% {
+            top: 15%;  
+        }
+        100% {
+            top: 15%;
+        }
+    }
+    @-webkit-keyframes fall3 {
+        0% {
+            top: 20px;
+        }
+        50% {
+            top: 31%;  
+        }
+        100% {
+            top: 31%;
+        }
+    }
+    @-webkit-keyframes fall4 {
+        0% {
+            top: 20px;
+        }
+        50% {
+            top: 22%;  
+        }
+        100% {
+            top: 22%;
+        }
+    }
+    @-webkit-keyframes fall5 {
+        0% {
+            top: 20px;
+        }
+        50% {
+            top: 22%;  
+        }
+        100% {
+            top: 22%;
+        }
+    }
+    @-webkit-keyframes fall6 {
+        0% {
+            top: 30px;
+        }
+        50% {
+            top: 44%;  
+        }
+        100% {
+            top: 44%;
+        }
+    }
+    @-webkit-keyframes fall7 {
+        0% {
+            top: 30px;
+        }
+        50% {
+            top: 60%;  
+        }
+        100% {
+            top: 60%;
+        }
+    }
+    @-webkit-keyframes fall8 {
+        0% {
+            top: 30px;
+        }
+        50% {
+            top: 44%;  
+        }
+        100% {
+            top: 44%;
+        }
+    }
+    @-webkit-keyframes fall9 {
+        0% {
+            top: 30px;
+        }
+        50% {
+            top: 53%;  
+        }
+        100% {
+            top: 53%;
+        }
+    }
+    @-webkit-keyframes fall10 {
+        0% {
+            top: 30px;
+        }
+        50% {
+            top: 53%;  
+        }
+        100% {
+            top: 53%;
+        }
+    }
+    @-webkit-keyframes toProgressBar {
+        0% {
+            top: 55%;
+        }
+        50% {
+            top: 75%;
+            left: 4%;  
+        }
+        100% {
+            top: 75%;
+            left: 4%;
+        }
+    }
+    #strong-bar {
+        position: absolute;
+        bottom: 20%;
+        left: 2%;
+        width: 100px;
+        height: 350px;
+        z-index: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .bar {
+        width: 40px;
+        height: 380px;
+        background-color: #FFD2B4;
+        border: 5px solid #3D1810;
+        overflow: hidden;
+        border-radius: 10px;    
+    }
+    .progress-bar {
+        width: 40%;
+        background-color: #C42020;
+        height: 0;
+        transition: height 1s ease;
+        border-radius: 5px;    
+    }
+    .badang-strong {
+        position: absolute;
+        height: 60px;
+    }
+    .circle-badang {
+        position: absolute;
+        height: 70px;
+        width: 70px;
+        bottom: -10%;
+        left: 10%;    
+        background-color: #FFD2B4;
+        border: 5px solid #3D1810;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;    
+        z-index: 1;
+    }
+    #badangTalk{
+        top: 20%;
+        width: 400px;
+        height: auto;
+        position: absolute;
+    }
+    @keyframes bigSmallButton {
+        0% {
+            transform: scale(1);
+        }
+        25% {
+            transform: scale(0.9);
+        }
+        50% {
+            transform: scale(1);
+        }
+        75% {
+            transform: scale(0.9);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+    #badang-strong-bubble{
+        position: absolute;
+        height: 300px;
+        top: 5%;
+        right: 10%;
+    }
+    @keyframes showImage {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+</style>    
+<body>
+    <div class="container">
+        <div class="achievement">
+            <img src="images/logo.png" class="logo">
+            <a href="character.html" class="home"><img src="images/home.png" alt=""></a>
+        </div>
+        <img id="story-image" src="" alt="Story Image">
+        <img src="images/images_badang/badang_kuat_bubble.png" id="badang-strong-bubble">
+        <img src="images/images_badang/apple.png" id="apple1">
+        <img src="images/images_badang/apple.png" id="apple2">
+        <img src="images/images_badang/apple.png" id="apple3">
+        <img src="images/images_badang/apple.png" id="apple4">
+        <img src="images/images_badang/apple.png" id="apple5">
+        <img src="images/images_badang/apple.png" id="apple6">
+        <img src="images/images_badang/apple.png" id="apple7">
+        <img src="images/images_badang/apple.png" id="apple8">
+        <img src="images/images_badang/apple.png" id="apple9">
+        <img src="images/images_badang/apple.png" id="apple10">
+        <div id="strong-bar">
+            <div class="circle-badang">
+                <img src="images/images_badang/badang_kuat.png" class="badang-strong">
+            </div>
+            <div class="bar">
+                <div class="progress-bar"></div>
+            </div> 
+        </div>
+        <img src="images/images_badang/badang-talk.gif" id="badangTalk" alt="GIF image">
+        <div id="sentence-intro">
+            <p id="story-sentence"></p>
+        </div>
+        <button id="nextButton">Seterusnya</button>
+    </div>
+    <script>
+        const storyData = [
+  {
+    image: 'images/images_badang/badang_bg_1.gif',
+    sentence: 'Hai, nama saya Badang.'
+  },
+  {
+    image: 'images/images_badang/badang_bg_1.gif',
+    sentence: 'Saya memerlukan 10 biji epal untuk menjadi kuat.'
+  },
+  {
+    image: 'images/images_badang/badang_bg_1.gif',
+    sentence: 'Anda perlu bina ayat untuk mendapatkan 10 epal tersebut.'
+  },
+  {
+    image: 'images/images_badang/badang_bg_1.gif',
+    sentence: 'Setiap ayat yang dibina akan diberikan satu epal.'
+  }
+];
+
+let pageIndex = 0;
+
+const storyImageElement = document.getElementById('story-image');
+const badangTalk = document.getElementById('badangTalk');   
+const storySentenceElement = document.getElementById('story-sentence');
+const sentenceIntro = document.getElementById('sentence-intro');
+const strongBar = document.getElementById('strong-bar');
+const nextButton = document.getElementById('nextButton');
+const apple1 = document.getElementById('apple1');
+const apple2 = document.getElementById('apple2');
+const apple3 = document.getElementById('apple3');
+const apple4 = document.getElementById('apple4');
+const apple5 = document.getElementById('apple5');
+const apple6 = document.getElementById('apple6');
+const apple7 = document.getElementById('apple7');
+const apple8 = document.getElementById('apple8');
+const apple9 = document.getElementById('apple9');
+const apple10 = document.getElementById('apple10');
+const speech = document.getElementById('badang-strong-bubble');
+
+        
+function updateContent() {
+  nextButton.style.animation = 'none';    
+  setInterval(shakeButtons, 10000);     
+  var clickSound = new Audio('sounds/click2.wav');
+  clickSound.play();
+  if (pageIndex < storyData.length) {
+    const page = storyData[pageIndex];
+    storyImageElement.src = page.image;
+    storySentenceElement.textContent = page.sentence;
+    strongBar.style.visibility = 'hidden';
+    badangTalk.src = "images/images_badang/badang-talk.gif";    
+    if (pageIndex === 0) {
+      speech.style.visibility = 'hidden';    
+      apple1.style.visibility = 'hidden';
+      apple2.style.visibility = 'hidden';
+      apple3.style.visibility = 'hidden';
+      apple4.style.visibility = 'hidden';
+      apple5.style.visibility = 'hidden';
+      apple6.style.visibility = 'hidden';
+      apple7.style.visibility = 'hidden';
+      apple8.style.visibility = 'hidden';
+      apple9.style.visibility = 'hidden';
+      apple10.style.visibility = 'hidden';
+      apple1.style.animation = '';
+      apple2.style.animation = '';
+      apple3.style.animation = '';
+      apple4.style.animation = '';
+      apple5.style.animation = '';
+      apple6.style.animation = '';
+      apple7.style.animation = '';
+      apple8.style.animation = '';
+      apple9.style.animation = '';
+      apple10.style.animation = '';
+      storySentenceElement.style.animation = 'typing 2s steps(20, end) forwards, blink-caret 0.75s step-end infinite';    
+      setTimeout(() => {
+        storySentenceElement.style.animation = 'blink-caret 0.75s step-end infinite';
+        badangTalk.src = "images/images_badang/badang-stay.gif";  
+      }, 2100);   
+    }
+    else if (pageIndex === 1) {
+      speech.style.visibility = 'visible';
+      speech.style.animation = 'showImage 0.5s forwards';    
+      apple1.style.visibility = 'visible';
+      apple2.style.visibility = 'visible';
+      apple3.style.visibility = 'visible';
+      apple4.style.visibility = 'visible';
+      apple5.style.visibility = 'visible';
+      apple6.style.visibility = 'visible';
+      apple7.style.visibility = 'visible';
+      apple8.style.visibility = 'visible';
+      apple9.style.visibility = 'visible';
+      apple10.style.visibility = 'visible';
+      var correctAnswerSound = new Audio('sounds/correctAnswer.mp3');
+      correctAnswerSound.play();
+      apple1.style.animation = 'fall1 6s forwards';
+      apple2.style.animation = 'fall2 6s forwards';
+      apple3.style.animation = 'fall3 6s forwards';
+      apple4.style.animation = 'fall4 6s forwards';
+      apple5.style.animation = 'fall5 6s forwards';
+      apple6.style.animation = 'fall6 6s forwards';
+      apple7.style.animation = 'fall7 6s forwards';
+      apple8.style.animation = 'fall8 6s forwards';
+      apple9.style.animation = 'fall9 6s forwards';
+      apple10.style.animation = 'fall10 6s forwards';
+      storySentenceElement.style.animation = 'typing 2s steps(20, end) forwards, blink-caret 0.75s step-end infinite';    
+      setTimeout(() => {
+        storySentenceElement.style.animation = 'blink-caret 0.75s step-end infinite';
+        badangTalk.src = "images/images_badang/badang-stay.gif";  
+      }, 2100);     
+    }
+    else if (pageIndex === 2) {  
+      speech.style.visibility = 'hidden';    
+      apple1.style.visibility = 'visible';
+      apple2.style.visibility = 'visible';
+      apple3.style.visibility = 'visible';
+      apple4.style.visibility = 'visible';
+      apple5.style.visibility = 'visible';
+      apple6.style.visibility = 'visible';
+      apple7.style.visibility = 'visible';
+      apple8.style.visibility = 'visible';
+      apple9.style.visibility = 'visible';
+      apple10.style.visibility = 'visible';
+      storySentenceElement.style.animation = 'typing 2s steps(20, end) forwards, blink-caret 0.75s step-end infinite';    
+      setTimeout(() => {
+        storySentenceElement.style.animation = 'blink-caret 0.75s step-end infinite';
+        badangTalk.src = "images/images_badang/badang-stay.gif";  
+      }, 2100);     
+    }
+    else if (pageIndex === 3) {
+      speech.style.visibility = 'hidden';    
+      apple1.style.visibility = 'visible';
+      apple2.style.visibility = 'visible';
+      apple3.style.visibility = 'visible';
+      apple4.style.visibility = 'visible';
+      apple5.style.visibility = 'visible';
+      apple6.style.visibility = 'visible';
+      apple7.style.visibility = 'visible';
+      apple8.style.visibility = 'visible';
+      apple9.style.visibility = 'visible';
+      apple10.style.visibility = 'visible';
+      strongBar.style.visibility = 'visible';
+      storySentenceElement.style.animation = 'typing 2s steps(20, end) forwards, blink-caret 0.75s step-end infinite';    
+      setTimeout(() => {
+        storySentenceElement.style.animation = 'blink-caret 0.75s step-end infinite'; 
+        badangTalk.src = "images/images_badang/badang-stay.gif";  
+      }, 2100);     
+      apple9.style.animation = 'toProgressBar 3s forwards';     
+      setTimeout(() => {
+        const progressBar = document.querySelector('.progress-bar');
+        progressBar.style.position = 'absolute';
+        progressBar.style.bottom = '0';
+        progressBar.style.height = '25%';
+        var levelUpSound = new Audio('sounds/levelUp.mp3');
+        levelUpSound.play(); 
+      }, 600); 
+    }
+
+    pageIndex++;
+  } else {
+    // End of the story
+    window.location.href = 'badang.html';
+    nextButton.disabled = true;
+  }
+      
+}     
+
+function shakeButtons(){
+    nextButton.style.animation = 'bigSmallButton 1s infinite';
+    setTimeout(()=>{
+        nextButton.style.animation = 'none';
+    },2000);  
+}                       
+      
+function playMusicBg(){
+    var bgMusic = new Audio('sounds/bg_BadangGame.mp3');
+    setTimeout(()=>{
+         bgMusic.play();
+         bgMusic.volume = 0.3; 
+    },10);  
+}        
+        
+nextButton.addEventListener('click', updateContent);
+
+updateContent();
+playMusicBg();
+
+    </script>
+</body>
+</html>

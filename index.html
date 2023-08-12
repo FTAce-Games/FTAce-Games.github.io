@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FTA Games</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Luckiest+Guy&family=Rowdies:wght@300;400;700&family=Sigmar&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+</head>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    #container{
+        width: 100%;
+        height: 100vh;
+        background: url('images/menu_bg.png');
+        background-position: center;
+        background-size: cover;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+    }
+    .menu-logo{
+        position: absolute;
+        top: 10%;
+        height: 60%;
+        animation: smallBigSmall 2s infinite;
+    }
+    .copyright{
+        position: absolute;
+        bottom: 3%;
+        right: 2%;
+        font-size: 25px;
+        color: #502D16;
+        text-decoration: none;
+        height: 40px;
+        border: 3px solid #502D16; 
+        background: #F8C753;
+        border-radius: 50%;
+        width: 40px;
+        font-family: 'Rowdies', cursive;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+    .copyright:hover{
+        background: #502D16;
+        color: #F8C753;
+    }
+    @keyframes smallBigSmall {
+        0%, 100% {
+            transform: scale(0.98);
+        }
+        50% {
+            transform: scale(1);
+        }
+    }
+    .playButton {
+      position: absolute;
+      width: 80px;
+      height: 50px;
+      background: #61A81B;
+      border-radius: 50% / 10%;
+      color: white;
+      text-align: center;
+      text-indent: .1em;  
+      top: 72%;
+      margin-left: 2%;    
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+      border: 2px solid #502D16;    
+      z-index: 1;    
+      cursor: pointer;    
+    }
+    .playButton:before {
+      content: '';
+      position: absolute;
+      top: 10%;
+      bottom: 10%;
+      right: -5%;
+      left: -5%;
+      background: inherit;
+      border-radius: 5% / 50%;
+    }
+    .playButton::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 10px 0 10px 15px;
+        border-color: transparent transparent transparent white;
+    }
+    .playButton:hover::after {
+        border-color: transparent transparent transparent #61A81B;
+    }
+    .playButton:hover{
+        background: white;
+    }
+    @keyframes shake {
+        0% {
+            transform: translateX(0);
+        }
+        12.5% {
+            transform: translateX(-5px) rotate(-5deg);
+        }
+        25% {
+            transform: translateX(5px) rotate(5deg);
+        }
+        37.5% {
+            transform: translateX(-5px) rotate(-5deg);
+        }
+        50% {
+            transform: translateX(5px) rotate(5deg);
+        }
+        62.5% {
+            transform: translateX(-5px) rotate(-5deg);
+        }
+        75% {
+            transform: translateX(5px) rotate(5deg);
+        }
+        87.5% {
+            transform: translateX(-5px) rotate(-5deg);
+        }
+        100% {
+            transform: translateX(0);
+        }
+    }
+    .animal-container{
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        position: absolute;
+    }
+    .butterfly1 {
+      position: absolute;
+      top:0%; 
+      bottom:50%;
+      left:0;
+      right:0;
+      overflow:hidden;
+      margin:auto;     
+      height: 30px;
+      width: auto;
+      animation: butterfly-path1 15s linear infinite;
+    }
+    .butterfly2 {
+      position: absolute;
+      top:50%; 
+      bottom:0%;
+      left:0;
+      right:0;
+      overflow:hidden;
+      margin:auto;     
+      height: 30px;
+      width: auto;
+      animation: butterfly-path2 15s linear infinite;
+    }
+    @keyframes butterfly-path1{
+      0%{
+        transform:rotate(-10deg)
+                  translateY(-10px)
+                  translateX(-700px)
+      }
+      20%{
+        transform:rotate(10deg)
+                  translateY(10px)
+                  translateX(-350px)
+
+      }
+      40%{
+        transform:rotate(-10deg)
+                  translateY(6px)
+                  translateX(0px)
+      }    
+      60%{
+        transform:rotate(-10deg)
+                  translateY(6px)
+                  translateX(0px)
+      }
+      80%{
+        transform:rotate(10deg)
+                  translateY(10px)
+                  translateX(350px)
+
+      }  
+      100%{
+        transform:rotate(-10deg)
+                  translateY(-10px)
+                  translateX(700px)
+      }
+    }
+    @keyframes butterfly-path2{
+      0%{
+        transform:rotate(-10deg)
+                  translateY(-10px)
+                  translateX(700px)
+      }
+      25%{
+        transform:rotate(10deg)
+                  translateY(10px)
+                  translateX(350px)
+
+      }
+      50%{
+        transform:rotate(-10deg)
+                  translateY(-10px)
+                  translateX(0px)
+      }
+      75%{
+        transform:rotate(10deg)
+                  translateY(10px)
+                  translateX(-350px)
+
+      }  
+      100%{
+        transform:rotate(-10deg)
+                  translateY(-10px)
+                  translateX(-650px)
+      }
+    }
+
+
+</style>    
+<body>
+    <div id="container">
+        <img src="images/menu_logo.png" class="menu-logo">
+        <a href="character.html" class="playButton" id="playButton"></a>
+        <div class="animal-container">
+            <img src="images/butterfly.gif" class="butterfly1" alt="GIF image">
+            <img src="images/butterfly2.gif" class="butterfly2" alt="GIF image">
+        </div>
+    </div>
+    <script>
+        function shakeButtons() {
+            const playButton = document.getElementById('playButton');
+            playButton.style.animation = 'shake 1s infinite';
+            setTimeout(() => {
+                playButton.style.animation = 'none';  
+            }, 1000);
+        }
+        setInterval(shakeButtons, 5000);
+
+        const container = document.getElementById('container');
+
+        function playBgMusic() {
+          const bgMusic = new Audio('sounds/bg_music.mp3');
+          bgMusic.loop = true;    
+          bgMusic.play();
+          container.removeEventListener('click', playBgMusic);
+        }
+
+        container.addEventListener('click', playBgMusic);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,1499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Badang</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Luckiest+Guy&family=Rowdies:wght@300;400;700&family=Sigmar&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet">
+</head>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    .container{
+        width: 100%;
+        height: 100vh;
+        background-position: center;
+        background-size: cover;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .achievement{
+        height: 12%;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1;
+        position: absolute;
+    }
+    .logo{
+        margin-top: 0px;
+        width: 100px;
+        margin-left: 30px;
+    }
+    .home{
+        margin-right: 50px;
+        margin-top: 10px;
+    }
+    #story-background {
+        width: 100%;
+        height: 100vh;  
+        overflow: hidden;   
+    }
+    #story-background img {
+        width: 100%;
+        height: 100%;
+        transition: 1s;
+    }
+    #apple-basket{
+        position: absolute;
+        width: 420px;
+        height: 180px;
+        bottom: 0%;
+        left: -5%;
+        overflow: hidden;
+    }
+    #apple-basket img{
+        width: 420px;
+        height: 180px;
+        margin-top: 12px;
+        filter: drop-shadow(2px 0px 2px #000);
+    }
+    h3{
+        position: absolute;
+        left: 38%;
+        top: 55%;
+        z-index: 1;
+        font-family: 'Luckiest Guy', cursive;
+        font-size: 15px;
+        color: #34240C;
+        user-select: none;
+    }
+    #retryButton {
+        position: fixed;
+        color: #fff;
+        right: 32%;
+        bottom: 15%;
+        width: 180px;
+        height: 60px;
+        text-decoration: none;
+        font-family: 'Rowdies', cursive;
+        background: #C42020;
+        border: 0;
+        border-radius: 10px;
+        font-size: 25px;
+    }
+    #retryButton:hover {
+        color: #C42020;
+        background: #fff;
+    }
+    #nextButton {
+        position: fixed;
+        color: #fff;
+        right: 32%;
+        bottom: 15%;
+        width: 180px;
+        height: 60px;
+        text-decoration: none;
+        font-family: 'Rowdies', cursive;
+        background: #FF7018;
+        border: 0;
+        border-radius: 10px;
+        font-size: 25px;
+    }
+    #nextButton:hover {
+        color: #FF7018;
+        background: #fff;
+    }
+    #games-box {
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+        width: 800px;
+        height: 200px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;    
+        align-items: center;
+        overflow: hidden;
+    }
+    #wordbox-bg{
+        margin-top: 30px;
+        width: 500px;
+        height: 10px;
+        border-radius: 5px;
+        padding: 20px;
+        text-align: center;
+        color: #3D1810; 
+        font-family: 'Rowdies', cursive; 
+        z-index: 1;
+    }
+    .question-box{
+        width: 600px;
+        height: 50px;
+        margin-top: 25px; 
+        display: flex;
+        justify-content: center;
+        z-index: 1;
+    }
+
+    #question-btn {     
+        display: flex;
+        justify-content: center;
+        align-items: center; 
+    }
+
+    #question-btn button {
+        margin: 5px;
+        color: #3D1810;    
+        padding: 10px 20px;
+        background-color: #FFBD59;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-family: 'Rowdies', cursive; 
+    }
+    #question-btn button:hover {
+        color: #FFBD59;    
+        background-color: #3D1810;
+    }
+    #result {
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+    #woodenSign{
+        position: absolute;
+        z-index: 0;
+        top: 15%;
+        height: 220px;
+        width: 650px;
+    }
+    @-webkit-keyframes walk1 {
+        0% {
+            right: 0px;
+        }
+        50% {
+            right: 30px;
+        }
+        100% {
+            right: 30px;
+        }
+    }
+    @-webkit-keyframes walk2 {
+        0% {
+            right: 0px;
+        }
+        50% {
+            right: 30px;
+        }
+        100% {
+        right: 30px;
+        }
+    }
+    @-webkit-keyframes walk3 {
+        0% {
+            right: 0px;
+        }
+        50% {
+            right: 30px;
+        }
+        100% {
+            right: 30px;
+        }
+    }
+/*-----------------------------Pop-up-------------------------*/
+    #pop-up {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        flex-direction: column;  
+        align-items: center;
+        overflow: hidden;
+    }
+    .popupBox{
+        position: absolute;
+        height: 100%;
+        width: 77%;
+    }
+    #betul{
+        position: absolute;
+        top: 15%;
+        color: #FFDAA3;
+        font-size: 70px;
+        z-index: 1;
+        font-family: 'Fira Sans', sans-serif;
+        filter: drop-shadow(1px 1px 1px #000);
+    }
+    #salah{
+        position: absolute;
+        top: 15%;
+        color: #FFDAA3;
+        font-size: 70px;
+        z-index: 1;
+        font-family: 'Fira Sans', sans-serif;
+        filter: drop-shadow(1px 1px 1px #000);
+    }
+    #pop-up-fail {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        flex-direction: column;  
+        align-items: center;
+    }
+    #popupBadangSuccess{
+        position: absolute;
+        top: 34%;
+        left: 19%;
+        width: 25%;
+        height: auto;  
+        z-index: 1;
+    }
+    #popupBadangFail{
+        position: absolute;
+        top: 34%;
+        left: 20.5%;
+        width: 25%;
+        height: auto;  
+        z-index: 1;
+    }
+    #progressApple {
+        position: absolute;
+        top: 50%;
+        left: 8%;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: 5px solid #CB9F17;
+        background-color: #CB9F17;
+        box-shadow: 0 0 10px 5px #CB9F17;
+        z-index: 1;
+    }
+    @keyframes applePopup {
+        0% {
+            transform: scale(0.5);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+    @-webkit-keyframes appleProgressInput {
+        0% {
+            top: 50%;
+            left: 8%;
+        } 
+        100% {
+            top: 58%;  
+            left: 45%;
+        }
+    }
+    #strong-bar {
+        position: absolute;
+        top: 57%;
+        right: 19%;
+        width: 40%;
+        height: 10%;
+        z-index: 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .bar {
+        width: 380px;
+        height: 50px;
+        background-color: #FFD2B4;
+        border: 5px solid #835005;
+        overflow: hidden;  
+        border-radius: 20px;
+        margin-left: 80px;
+    }
+    .progress-bar {
+        height: 100%;
+        background-color: #C42020;
+        width: 0;
+        transition: width 1s ease;
+        border-radius: 5px;    
+    }
+    .badang-strong {
+        position: absolute;
+        height: 60px;
+    }
+    .circle-badang {
+        position: absolute;
+        height: 70px;
+        width: 70px;
+        left: 30px;    
+        background-color: #FFD2B4;
+        border: 10px solid #835005;
+        display: flex;
+        border-radius: 30px;
+        justify-content: center;
+        align-items: center;  
+    }
+    #heart-bar{
+        position: absolute;
+        top: 53%;
+        right: 25%;
+        width: 350px;
+        height: 100px;
+        z-index: 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 80px;
+    }
+    #heart-bar-wood{
+        position: absolute;
+        width: 350px;
+        height: 100px;
+        left: 1%;
+        bottom: 2%;
+    }
+    #heart-bar_1, #heart-bar_2, #heart-bar_3{
+        width: 45px;
+        height: 40px;
+        z-index: 3;  
+    }
+    #finalAnswer{
+        position: absolute;
+        z-index: 1;
+        font-size: 18px;
+        top: 38%;
+        font-family: 'Ubuntu', sans-serif;
+        font-weight: 700;
+        left: 45%;
+        background: #FFD2B4;
+        padding: 20px;
+        max-width: 380px;
+        border-radius: 20px;
+    }
+    #map{
+        position: absolute;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+    }
+    .badang-map{
+        width: 100%;
+        height: 120vh;
+    }
+    .buttonMap{
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 70px;
+        top: 47.5%;
+        gap: 4%;
+    }
+    .button {
+        border: 3px solid #fff;
+        border-radius: 100%;
+        text-align: center;
+        justify-content: center;
+        padding: 1%;
+        padding-top: 1%;
+        padding-bottom: 1%;
+        width: 1.9%;
+        font-family: 'Rowdies', cursive;
+    }
+    .btn1{
+        color: #9F8107;
+        background: #FFDE59;
+        box-shadow: 0 -2px 0 3px #FFCC00 inset, 0 5px 5px rgba(3, 25, 41, 0.17), 0 15px rgba(255, 255, 255, 0.25) inset;
+    }
+    .btn2{
+        background: #333333;
+        box-shadow: 0 -2px 0 3px #1a1a1a inset, 0 5px 5px rgba(0, 0, 0, 0.17), 0 15px rgba(255, 255, 255, 0.32) inset;
+    }
+    .btn3{
+        background: #333333;
+        box-shadow: 0 -2px 0 3px #1a1a1a inset, 0 5px 5px rgba(0, 0, 0, 0.17), 0 15px rgba(255, 255, 255, 0.32) inset;
+    }
+    .btn4{
+        background: #333333;
+        box-shadow: 0 -2px 0 3px #1a1a1a inset, 0 5px 5px rgba(0, 0, 0, 0.17), 0 15px rgba(255, 255, 255, 0.32) inset;
+    }
+    .btn5{
+        background: #333333;
+        box-shadow: 0 -2px 0 3px #1a1a1a inset, 0 5px 5px rgba(0, 0, 0, 0.17), 0 15px rgba(255, 255, 255, 0.32) inset;
+    }
+    .btn6{
+        background: #333333;
+        box-shadow: 0 -2px 0 3px #1a1a1a inset, 0 5px 5px rgba(0, 0, 0, 0.17), 0 15px rgba(255, 255, 255, 0.32) inset;
+    }
+    .btn7{
+        background: #333333;
+        box-shadow: 0 -2px 0 3px #1a1a1a inset, 0 5px 5px rgba(0, 0, 0, 0.17), 0 15px rgba(255, 255, 255, 0.32) inset;
+    }
+    .btn8{
+        background: #333333;
+        box-shadow: 0 -2px 0 3px #1a1a1a inset, 0 5px 5px rgba(0, 0, 0, 0.17), 0 15px rgba(255, 255, 255, 0.32) inset;
+    }
+    .btn9{
+        background: #333333;
+        box-shadow: 0 -2px 0 3px #1a1a1a inset, 0 5px 5px rgba(0, 0, 0, 0.17), 0 15px rgba(255, 255, 255, 0.32) inset;
+    }
+    .btn10{
+        background: #333333;
+        box-shadow: 0 -2px 0 3px #1a1a1a inset, 0 5px 5px rgba(0, 0, 0, 0.17), 0 15px rgba(255, 255, 255, 0.32) inset;
+    }
+    #badangWalkMap{
+        position: absolute;
+        height: 20%;
+        top: 33%;
+        left: 0%;
+    }
+    @-webkit-keyframes badangWalkingMap1 {
+        0% {
+            left:-5%;
+        }
+        100% { 
+            left: 4%;
+        }
+    }
+    @-webkit-keyframes badangWalkingMap2 {
+        0% {
+            left: 4%;
+        }
+        100% { 
+            left: 12%;
+        }
+    }
+    @-webkit-keyframes badangWalkingMap3 {
+        0% {
+            left: 12%;
+        }
+        100% { 
+            left: 20.5%;
+        }
+    }
+    @-webkit-keyframes badangWalkingMap4 {
+        0% {
+            left: 20.5%;
+        }
+        100% { 
+            left: 28.8%;
+        }
+    }
+    @-webkit-keyframes badangWalkingMap5 {
+        0% {
+            left: 28.8%;
+        }
+        100% { 
+            left: 37%;
+        }
+    }
+    @-webkit-keyframes badangWalkingMap6 {
+        0% {
+            left: 37%;
+        }
+        100% { 
+            left: 45%;
+        }
+    }
+    @-webkit-keyframes badangWalkingMap7 {
+        0% {
+            left: 45%;
+        }
+        100% { 
+            left: 53.5%;
+        }
+    }
+    @-webkit-keyframes badangWalkingMap8 {
+        0% {
+            left: 53.5%;
+        }
+        100% { 
+            left: 62%;
+        }
+    }
+    @-webkit-keyframes badangWalkingMap9 {
+        0% {
+            left: 62%;
+        }
+        100% { 
+            left: 70%;
+        }
+    }
+    @-webkit-keyframes badangWalkingMap10 {
+        0% {
+            left: 70%;
+        }
+        100% { 
+            left: 78.5%;
+        }
+    }
+    @-webkit-keyframes badangWalkingMap11 {
+        0% {
+            left: 78.5%;
+        }
+        100% { 
+            left: 100%;
+        }
+    }
+    #question-character{
+        position: absolute;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+    }
+    #q1{
+        position: absolute;
+        width: 50%;
+        top: -48%;
+        left: 25%;
+    }
+    #q2{
+        position: absolute;
+        width: 35%;
+        top: 7%;
+        left: 30%;
+    }
+    #q3{
+        position: absolute;
+        width: 30%;
+        top: 3%;
+        left: 30%;
+    }
+    #q4{
+        position: absolute;
+        width: 40%;
+        top: 20%;
+        left: 33%;
+    }
+    #q5{
+        position: absolute;
+        width: 30%;
+        top: 20%;
+        left: 30%;
+    }
+    #q6{
+        position: absolute;
+        width: 45%;
+        bottom: 35%;
+        left: 15%;
+    }
+    #q7{
+        position: absolute;
+        width: 25%;
+        top: 10%;
+        left: 30%;
+    }
+    #q8{
+        position: absolute;
+        width: 50%;
+        bottom: 35%;
+        right: 20%;
+    }
+    #q9{
+        position: absolute;
+        width: 20%;
+        top: 20%;
+        left: 52%;
+    }
+    #q10{
+        position: absolute;
+        width: 30%;
+        top: 27%;
+        left: 45%;
+        transform: rotate(10deg)
+    }
+    @keyframes shadowAnimation {
+      0% {
+        filter: drop-shadow(10px 10px 10px transparent);
+        transform: scale(1);
+      }
+      50% {
+        filter: drop-shadow(10px 10px 10px #FFE98D);
+        transform: scale(1.01);  
+      }
+      100% {
+        filter: drop-shadow(10px 10px 10px transparent);
+        transform: scale(1);  
+      }
+    }
+    #heart-box{
+        position: absolute;
+        height: 450px;
+        width: 200px;
+        top: 5%;
+        right: 0%;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        gap: 75px;
+        overflow: hidden;
+    }
+    #tree_heart{
+        position: absolute;
+        height: 450px;
+        width: 200px;
+        z-index: 0;
+    }
+    .wood-sign-tree{
+        position: absolute;
+        width: 100px;
+        height: 30px;
+        top: 20%;
+        left: 30%;
+    }
+    .wood-tree-heart{
+        width: 100px;
+        height: 30px;
+    }
+    h2{
+        position: absolute;
+        color: #FFC7C7;
+        font-family: 'Rowdies', cursive;
+        font-size: 18px;
+        top: -35%;
+        left: 11%; 
+        user-select: none;
+    }
+    #heart_1, #heart_2, #heart_3{
+        height: 35px;
+        width: 40px;
+        z-index: 1;
+        margin-left: 23px;
+    }
+    #heart_1:hover, #heart_2:hover, #heart_3:hover{
+        transform: scale(1.05);
+        transition: transform 0.5s;
+        filter: drop-shadow(1px 1px 1px #FFC7C7);
+    }
+    #heart_1{
+        margin-top: 62%;
+    }
+    #heart_2{
+        
+    }
+    #heart_3{
+        
+    }
+    .butterfly1 {
+      position: absolute;
+      top:33%;
+      right: 15%;
+      margin:auto;     
+      height: 30px;
+      width: 50px;
+      transform: rotate(30deg);
+    }
+    @-webkit-keyframes butterflyOut {
+        0% {
+            right: 15%;
+        }
+        100% { 
+            right: -100%;
+        }
+    }
+    @-webkit-keyframes heartGone {
+        0% {
+            transform: scale(1)
+        }
+        50% { 
+            transform: scale(1.3)
+        }
+        100% { 
+            transform: scale(0)
+        }
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="achievement">
+            <img src="images/logo.png" class="logo">
+            <a href="character.html" class="home"><img src="images/home.png" alt=""></a>
+        </div>
+        <div id="question-character">
+            <img src="images/images_badang/badang_q1_1.png" id="q1">
+            <img src="images/images_badang/badang_q2_1.png" id="q2">
+            <img src="images/images_badang/badang_q3_1.png" id="q3">
+            <img src="images/images_badang/badang_q4_1.png" id="q4">
+            <img src="images/images_badang/badang_q5_1.png" id="q5">
+            <img src="images/images_badang/badang_q6_1.png" id="q6">
+            <img src="images/images_badang/badang_q7_1.png" id="q7">
+            <img src="images/images_badang/badang_q8_1.png" id="q8">
+            <img src="images/images_badang/badang_q9_1.png" id="q9">
+            <img src="images/images_badang/badang_q10_1.png" id="q10">
+        </div>
+        <div id="heart-box">
+            <img src="images/heart.png" id="heart_1">
+            <img src="images/heart.png" id="heart_2">
+            <img src="images/heart.png" id="heart_3">
+            <img src="images/tree_heart.png" id="tree_heart">
+            <img src="images/butterfly2.gif" class="butterfly1">
+            <div class="wood-sign-tree">
+                <h2>NYAWA</h2>
+                <img src="images/wood.png" class="wood-tree-heart">
+            </div>
+        </div>
+        <div id="games-box">
+            <div id="wordbox-bg"></div>
+            <div class="question-box">
+                <div id="question-btn" onclick="playSound()"></div>
+            </div>
+            <img src="images/wooden_sign.png" id="woodenSign">
+        </div>
+        <div id="story-background"></div>
+        <div id="pop-up">
+            <img src="images/pop-up.png" class="popupBox">
+            <div id="betul">Betul!</div>
+            <div id="salah">Salah!</div>
+            <div id="strong-bar">
+                <div class="circle-badang">
+                    <img src="images/images_badang/badang_kuat.png" class="badang-strong">
+                </div>
+                <div class="bar">
+                    <div class="progress-bar"></div>
+                </div> 
+            </div>
+            <div id="heart-bar">
+                <img src="images/heart.png" id="heart-bar_1">
+                <img src="images/heart.png" id="heart-bar_2">
+                <img src="images/heart.png" id="heart-bar_3">
+                <img src="images/heart_wood.png" id="heart-bar-wood">
+            </div>
+            <img src="images/images_badang/badang-success.gif" id="popupBadangSuccess">
+            <img src="images/images_badang/badang-fail.gif" id="popupBadangFail">
+            <div id="finalAnswer"></div>
+        </div>
+        <div id="apple-basket"><h3>EPAL DIPEROLEH</h3></div>
+        <div id="map">
+            <div class="buttonMap">
+                <div class="button btn1"><span>1</span></div>
+                <div class="button btn2"><span>2</span></div>
+                <div class="button btn3"><span>3</span></div>
+                <div class="button btn4"><span>4</span></div>
+                <div class="button btn5"><span>5</span></div>
+                <div class="button btn6"><span>6</span></div>
+                <div class="button btn7"><span>7</span></div>
+                <div class="button btn8"><span>8</span></div>
+                <div class="button btn9"><span>9</span></div>
+                <div class="button btn10"><span>10</span></div>
+            </div>
+            <img src="images/images_badang/badangWalk.gif" id="badangWalkMap">
+            <img src="images/images_badang/badang_map.png" class="badang-map">
+        </div>
+        <img src="images/images_badang/apple.png" id="progressApple">
+        <button id="retryButton">Cuba Lagi</button>
+        <button id="nextButton">Seterusnya</button>
+    </div>
+    <script>
+    
+    /*------------------Identifier-----------------------*/    
+        
+        const buttonContainer = document.getElementById('question-btn');
+        const wordBox = document.getElementById('wordbox-bg');
+        const storyBg = document.getElementById('story-background');
+        const nextButton = document.getElementById('nextButton');
+        const retryButton = document.getElementById('retryButton');
+        const gamesBox = document.getElementById('games-box');
+        const popupBadangProgress = document.getElementById('pop-up');
+        const heart1 = document.getElementById('heart_1');
+        const heart2 = document.getElementById('heart_2');
+        const heart3 = document.getElementById('heart_3');
+        const heartBar = document.getElementById('heart-bar');
+        const heartTree = document.getElementById('heart-box');
+        const heartBar1 = document.getElementById('heart-bar_1');
+        const heartBar2 = document.getElementById('heart-bar_2');
+        const heartBar3 = document.getElementById('heart-bar_3');
+        const q1 = document.getElementById('q1');
+        const q2 = document.getElementById('q2');
+        const q3 = document.getElementById('q3');
+        const q4 = document.getElementById('q4');
+        const q5 = document.getElementById('q5');
+        const q6 = document.getElementById('q6');
+        const q7 = document.getElementById('q7');
+        const q8 = document.getElementById('q8');
+        const q9 = document.getElementById('q9');
+        const q10 = document.getElementById('q10');
+        const map = document.getElementById('map');
+        const betul = document.getElementById('betul');
+        const salah = document.getElementById('salah');
+        const finalCorrectAnswer = document.getElementById('finalAnswer');
+        const badangWalkMap = document.getElementById('badangWalkMap');
+        const appleProgress = document.getElementById('progressApple');
+        const strongBar = document.getElementById('strong-bar');
+        const popupBadangSuccess = document.getElementById('popupBadangSuccess');
+        const popupBadangFail = document.getElementById('popupBadangFail');
+        const appleBasket = document.getElementById('apple-basket');
+        const btn1 = document.querySelector('.button.btn1');
+        const btn2 = document.querySelector('.button.btn2');
+        const btn3 = document.querySelector('.button.btn3');
+        const btn4 = document.querySelector('.button.btn4');
+        const btn5 = document.querySelector('.button.btn5');
+        const btn6 = document.querySelector('.button.btn6');
+        const btn7 = document.querySelector('.button.btn7');
+        const btn8 = document.querySelector('.button.btn8');
+        const btn9 = document.querySelector('.button.btn9');
+        const btn10 = document.querySelector('.button.btn10');
+        var bgMusic = new Audio('sounds/bg_BadangGame.mp3');
+        
+        /*----------------Hide---------------*/
+        popupBadangFail.style.visibility = 'hidden';
+        popupBadangSuccess.style.visibility = 'hidden';    
+        betul.style.visibility = 'hidden';
+        salah.style.visibility = 'hidden';  
+        nextButton.style.visibility = 'hidden';
+        retryButton.style.visibility = 'hidden';
+        popupBadangProgress.style.visibility = 'hidden';
+        appleProgress.style.visibility = 'hidden';
+        q1.style.visibility = 'hidden';
+        q2.style.visibility = 'hidden';
+        q3.style.visibility = 'hidden';
+        q4.style.visibility = 'hidden';
+        q5.style.visibility = 'hidden';
+        q6.style.visibility = 'hidden';
+        q7.style.visibility = 'hidden';
+        q8.style.visibility = 'hidden';
+        q9.style.visibility = 'hidden';
+        q10.style.visibility = 'hidden';
+        heartTree.style.visibility = 'hidden';
+        
+        const buttonValues = [ 
+          [
+            ['Dia', 'Mereka', 'Kamu'],
+            ['bermain buaian', 'bermain gasing', 'bermain basikal'],
+            ['di bawah pokok.', 'di atas jalan.', 'di tepi sungai.']
+          ],
+          [
+            ['Ahmad', 'Siti', 'Zul'],
+            ['menangkap rama-rama', 'menjaring rama-rama', 'mengurung rama-rama'],
+            ['di tepi sungai.', 'di taman.', 'di hadapan rumah.']
+          ],          
+          [
+            ['Aisyah', 'Nora', 'Farid'],
+            ['sedang menaiki', 'sedang menunggang', 'sedang membonceng'],
+            ['basikal','motosikal','beca'],  
+            ['di tepi rumah.', 'di padang.', 'di sungai.']
+          ],
+          [
+            ['Kambing', 'Lembu', 'Ayam'],
+            ['makan rumput', 'meragut rumput', 'mengunyah rumput'],
+            ['di padang.', 'di hadapan rumah.', 'di taman.']
+          ],          
+          [
+            ['Jamil dan kawan-kawan', 'Aiman dan Haikal', 'Fayyad sekeluarga'],
+            ['berkelah', 'memancing', 'bergambar'],
+            ['di bawah pokok.', 'di taman.', 'di tepi sungai.']
+          ],       
+          [
+            ['Ikan', 'Itik', 'Ayam'],
+            ['sedang menari', 'sedang berenang', 'sedang terbang'],
+            ['di sungai.', 'di dalam tasik.', 'di dalam pantai.']
+          ],   
+          [
+            ['Anis', 'Nurul', 'Adam'],
+            ['sedang menari', 'sedang melompat', 'sedang berjoging'],
+            ['di tepi sungai.', 'di tepi jalan.', 'di tepi rumah.']
+          ],      
+          [
+            ['Tayar basikal Lina', 'Tayar motosikal Lina', 'Tayar kereta Lina'],
+            ['musnah', 'rosak', 'pancit'],
+            ['di tepi sungai.', 'di atas jalan.', 'di hadapan rumah.']
+          ],         
+          [
+            ['Ikan', 'Burung', 'Ayam'],
+            ['makan', 'berehat', 'terbang'],
+            ['di atas pokok.', 'di tepi batu.', 'di dalam semak.']
+          ],     
+          [
+            ['Aisyah', 'Siti', 'Badang'],
+            ['sedang berdiri', 'sedang tidur', 'sedang minum'],
+            ['di rumah.', 'di tepi sungai.', 'di bawah pokok.']
+          ]
+        ];
+
+        const bgImages = ['images/images_badang/badang_q1.png',
+                          'images/images_badang/badang_q2.png',
+                          'images/images_badang/badang_q3.png',
+                          'images/images_badang/badang_q4.png',
+                          'images/images_badang/badang_q5.png',
+                          'images/images_badang/badang_q6.png',
+                          'images/images_badang/badang_q7.png',
+                          'images/images_badang/badang_q8.png',
+                          'images/images_badang/badang_q9.png',
+                          'images/images_badang/badang_q10.png'
+                         ];
+        
+        const appleBasketImg =                          
+                         ['images/images_badang/basket_0.png',
+                          'images/images_badang/basket_1.png',
+                          'images/images_badang/basket_2.png',
+                          'images/images_badang/basket_3.png',
+                          'images/images_badang/basket_4.png',
+                          'images/images_badang/basket_5.png',
+                          'images/images_badang/basket_6.png',
+                          'images/images_badang/basket_7.png',
+                          'images/images_badang/basket_8.png',
+                          'images/images_badang/basket_9.png',
+                          'images/images_badang/basket_10.png'
+                         ];
+        
+
+        let indexImage = 0;
+        let heartLeft = 3;
+        let selectedValues = [];
+
+        /*--------Question Image Function--------*/
+        
+        function showImages(){ 
+            const previousImagebg = storyBg.querySelector('img');
+            if (previousImagebg) {
+                previousImagebg.remove();
+            }
+            const previousAppleImg = appleBasket.querySelector('img');
+            if (previousAppleImg) {
+                previousAppleImg.remove();
+            }
+
+            const imgElementBg = document.createElement('img');
+            imgElementBg.src = bgImages[indexImage];
+            storyBg.appendChild(imgElementBg);
+            
+            const imgElementApple = document.createElement('img');
+            imgElementApple.src = appleBasketImg[indexImage];
+            appleBasket.appendChild(imgElementApple);
+            
+            
+            if(indexImage==0){
+                q1.style.visibility = 'visible';
+            }
+            else if(indexImage==1){
+                q1.style.visibility = 'hidden';
+                q2.style.visibility = 'visible';
+            }
+            else if(indexImage==2){
+                q1.style.visibility = 'hidden';
+                q2.style.visibility = 'hidden';
+                q3.style.visibility = 'visible';
+            }
+            else if(indexImage==3){
+                q1.style.visibility = 'hidden';
+                q2.style.visibility = 'hidden';
+                q3.style.visibility = 'hidden';
+                q4.style.visibility = 'visible';
+            }
+            else if(indexImage==4){
+                q1.style.visibility = 'hidden';
+                q2.style.visibility = 'hidden';
+                q3.style.visibility = 'hidden';
+                q4.style.visibility = 'hidden';
+                q5.style.visibility = 'visible';
+            }
+            else if(indexImage==5){
+                q1.style.visibility = 'hidden';
+                q2.style.visibility = 'hidden';
+                q3.style.visibility = 'hidden';
+                q4.style.visibility = 'hidden';
+                q5.style.visibility = 'hidden';
+                q6.style.visibility = 'visible';
+            }
+            else if(indexImage==6){
+                q1.style.visibility = 'hidden';
+                q2.style.visibility = 'hidden';
+                q3.style.visibility = 'hidden';
+                q4.style.visibility = 'hidden';
+                q5.style.visibility = 'hidden';
+                q6.style.visibility = 'hidden';
+                q7.style.visibility = 'visible';
+            }
+            else if(indexImage==7){
+                q1.style.visibility = 'hidden';
+                q2.style.visibility = 'hidden';
+                q3.style.visibility = 'hidden';
+                q4.style.visibility = 'hidden';
+                q5.style.visibility = 'hidden';
+                q6.style.visibility = 'hidden';
+                q7.style.visibility = 'hidden';
+                q8.style.visibility = 'visible';
+            }
+            else if(indexImage==8){
+                q1.style.visibility = 'hidden';
+                q2.style.visibility = 'hidden';
+                q3.style.visibility = 'hidden';
+                q4.style.visibility = 'hidden';
+                q5.style.visibility = 'hidden';
+                q6.style.visibility = 'hidden';
+                q7.style.visibility = 'hidden';
+                q8.style.visibility = 'hidden';
+                q9.style.visibility = 'visible';
+            }
+            else if(indexImage==9){
+                q1.style.visibility = 'hidden';
+                q2.style.visibility = 'hidden';
+                q3.style.visibility = 'hidden';
+                q4.style.visibility = 'hidden';
+                q5.style.visibility = 'hidden';
+                q6.style.visibility = 'hidden';
+                q7.style.visibility = 'hidden';
+                q8.style.visibility = 'hidden';
+                q9.style.visibility = 'hidden';
+                q10.style.visibility = 'visible';
+            }
+            highlightImage();
+        }
+
+        showImages();
+
+        /*--------GamesBox Function--------*/
+        
+        function showGamesBox(){
+            selectedValues = [];
+            wordBox.textContent = ''; // Clear previous word box content
+            const values = buttonValues[indexImage][0]; // Retrieve the first set of button values for the next question
+            buttonContainer.innerHTML = ''; // Clear the button container
+            createButtons(values, handleButtonClick);
+            nextButton.style.visibility = 'hidden'; // Hide the next button again
+            buttonContainer.style.display = 'block';
+            wordBox.style.color = '';
+            gamesBox.style.visibility = 'visible'; 
+        }
+
+        /*--------Badang Animation Map Function--------*/
+        
+        function startAnimationBadang() {
+          badangWalkMap.src = "images/images_badang/badangWalk.gif";     
+          if (indexImage === 0) {
+            badangWalkMap.style.animation = 'badangWalkingMap1 3s linear forwards';    
+            setTimeout(() => {
+                badangWalkMap.src = "images/images_badang/badangMapStay.png";  
+            }, 3000);
+          } else if (indexImage === 1) {
+            btn2.style.color = '#A20063';
+            btn2.style.background = '#FF66C4';
+            btn2.style.boxShadow = '0 -2px 0 3px #FF009D inset, 0 5px 5px rgba(3, 25, 41, 0.17), 0 15px rgba(255, 255, 255, 0.25) inset';    
+            badangWalkMap.style.animation = 'badangWalkingMap2 4s forwards';     
+            setTimeout(() => {
+                badangWalkMap.src = "images/images_badang/badangMapStay.png";  
+            }, 3000);
+          } else if (indexImage === 2) {
+            btn3.style.color = '#3D1810';
+            btn3.style.background = '#775638';
+            btn3.style.boxShadow = '0 -2px 0 3px #3D1810 inset, 0 5px 5px rgba(3, 25, 41, 0.17), 0 15px rgba(255, 255, 255, 0.25) inset';   
+            badangWalkMap.style.animation = 'badangWalkingMap3 4s forwards';     
+            setTimeout(() => {
+                badangWalkMap.src = "images/images_badang/badangMapStay.png";  
+            }, 3000);    
+          }else if (indexImage === 3) {
+            btn4.style.color = '#D15000';
+            btn4.style.background = '#FFBD59';
+            btn4.style.boxShadow = '0 -2px 0 3px #FF914D inset, 0 5px 5px rgba(3, 25, 41, 0.17), 0 15px rgba(255, 255, 255, 0.25) inset';    
+            badangWalkMap.style.animation = 'badangWalkingMap4 4s forwards';  
+            setTimeout(() => {
+                badangWalkMap.src = "images/images_badang/badangMapStay.png";  
+            }, 3000);    
+          }else if (indexImage === 4) {
+            btn5.style.color = '#0A4752';
+            btn5.style.background = '#0097B2';
+            btn5.style.boxShadow = '0 -2px 0 3px #00D8FF inset, 0 5px 5px rgba(3, 25, 41, 0.17), 0 15px rgba(255, 255, 255, 0.25) inset';   
+            badangWalkMap.style.animation = 'badangWalkingMap5 4s forwards'; 
+            setTimeout(() => {
+                badangWalkMap.src = "images/images_badang/badangMapStay.png";  
+            }, 3000);    
+          }else if (indexImage === 5) {
+            btn6.style.color = '#00177F';
+            btn6.style.background = '#5271FF';
+            btn6.style.boxShadow = '0 -2px 0 3px #002EFF inset, 0 5px 5px rgba(3, 25, 41, 0.17), 0 15px rgba(255, 255, 255, 0.25) inset';   
+            badangWalkMap.style.animation = 'badangWalkingMap6 4s forwards'; 
+            setTimeout(() => {
+                badangWalkMap.src = "images/images_badang/badangMapStay.png";  
+            }, 3000);    
+          }else if (indexImage === 6) {
+            btn7.style.color = '#8B0202';
+            btn7.style.background = '#FF5757';
+            btn7.style.boxShadow = '0 -2px 0 3px #FF0000 inset, 0 5px 5px rgba(3, 25, 41, 0.17), 0 15px rgba(255, 255, 255, 0.25) inset';   
+            badangWalkMap.style.animation = 'badangWalkingMap7 4s forwards'; 
+            setTimeout(() => {
+                badangWalkMap.src = "images/images_badang/badangMapStay.png";  
+            }, 3000);    
+          }else if (indexImage === 7) {
+            btn8.style.color = '#006B37';
+            btn8.style.background = '#00BF63';
+            btn8.style.boxShadow = '0 -2px 0 3px #00FF84 inset, 0 5px 5px rgba(3, 25, 41, 0.17), 0 15px rgba(255, 255, 255, 0.25) inset';   
+            badangWalkMap.style.animation = 'badangWalkingMap8 4s forwards'; 
+            setTimeout(() => {
+                badangWalkMap.src = "images/images_badang/badangMapStay.png";  
+            }, 3000);    
+          }else if (indexImage === 8) {
+            btn9.style.color = '#846058';
+            btn9.style.background = '#F7C9BF';
+            btn9.style.boxShadow = '0 -2px 0 3px #FFA38F inset, 0 5px 5px rgba(3, 25, 41, 0.17), 0 15px rgba(255, 255, 255, 0.25) inset';   
+            badangWalkMap.style.animation = 'badangWalkingMap9 4s forwards'; 
+            setTimeout(() => {
+                badangWalkMap.src = "images/images_badang/badangMapStay.png";  
+            }, 3000);    
+          }else if (indexImage === 9) {
+            btn10.style.color = '#646363';
+            btn10.style.background = '#FFFFFF';
+            btn10.style.boxShadow = '0 -2px 0 3px #C4C0C0 inset, 0 5px 5px rgba(3, 25, 41, 0.17), 0 15px rgba(255, 255, 255, 0.25) inset';   
+            badangWalkMap.style.animation = 'badangWalkingMap10 4s forwards';
+            setTimeout(() => {
+                badangWalkMap.src = "images/images_badang/badangMapStay.png";  
+            }, 3000);    
+          }
+            else{
+            badangWalkMap.style.animation = 'badangWalkingMap11 4s forwards';
+            setTimeout(() => {
+                badangWalkMap.src = "images/images_badang/badangMapStay.png";  
+            }, 3000);  
+            }
+        }
+
+        startAnimationBadang();
+
+        /*--------Show Map Function--------*/
+        
+        function showMap(){
+            map.style.visibility = 'visible';
+            appleBasket.style.visibility = 'hidden';
+            heartTree.style.visibility = 'hidden';
+            setTimeout(() => {
+                map.style.visibility = 'hidden';
+                heartTree.style.visibility = 'visible';
+                appleBasket.style.visibility = 'visible';
+            }, 4050);
+        }
+        
+        showMap();
+        
+        /*--------Question Button Function--------*/
+        
+        function createButtons(values, callback) {
+          values.forEach(value => {
+            const button = document.createElement('button');
+            button.textContent = value;
+            buttonContainer.appendChild(button);
+
+            button.addEventListener('click', () => {
+              selectedValues.push(value);
+              wordBox.textContent += `${value} `;
+              hideAllButtons();
+              callback();
+            });
+          });
+        }
+
+        function hideAllButtons() {
+          const buttons = buttonContainer.querySelectorAll('button');
+          buttons.forEach(button => {
+            button.style.display = 'none';
+          });
+        }
+
+        function handleButtonClick() {
+          let buttonNumber;
+          if (indexImage === 2) {
+            buttonNumber = 4;
+          } else {
+            buttonNumber = 3;
+          }
+
+          if (selectedValues.length === buttonNumber) {
+            buttonContainer.style.display = 'none';
+            checkAnswer();
+          } else {
+            const index = selectedValues.length;
+            const values = buttonValues[indexImage][index];
+            createButtons(values, handleButtonClick);
+          }
+        }
+
+        /*--------Check Answer Function--------*/
+        
+        function checkAnswer() {
+          const answer = wordBox.textContent.trim();
+          let expectedAnswer;
+
+          if (indexImage === 0) {
+            expectedAnswer = 'Mereka bermain buaian di bawah pokok.';
+          } else if (indexImage === 1) {
+            expectedAnswer = 'Siti menangkap rama-rama di taman.';
+          } else if (indexImage === 2) {
+            expectedAnswer = 'Farid sedang menunggang basikal di padang.';
+          } else if (indexImage === 3) {
+            expectedAnswer = 'Lembu meragut rumput di padang.';
+          } else if (indexImage === 4) {
+            expectedAnswer = 'Fayyad sekeluarga berkelah di tepi sungai.';
+          } else if (indexImage === 5) {
+            expectedAnswer = 'Itik sedang berenang di sungai.';
+          } else if (indexImage === 6) {
+            expectedAnswer = 'Adam sedang berjoging di tepi jalan.';
+          } else if (indexImage === 7) {
+            expectedAnswer = 'Tayar basikal Lina pancit di atas jalan.';
+          } else if (indexImage === 8) {
+            expectedAnswer = 'Burung berehat di atas pokok.';
+          } else if (indexImage === 9) {
+            expectedAnswer = 'Badang sedang tidur di bawah pokok.';
+          } else{
+            expectedAnswer = '';      
+          }
+
+          const answerWords = answer.split(' ');
+          const expectedWords = expectedAnswer.split(' ');
+
+          wordBox.innerHTML = ''; // Clear previous word box content
+          let finalAnswerString = '';
+            
+          for (let i = 0; i < answerWords.length; i++) {
+            const span = document.createElement('span');
+            span.textContent = answerWords[i] + ' ';
+
+            if (answerWords[i] === expectedWords[i]) {
+              span.style.color = '#228B22';
+            } else {
+              span.style.color = 'red';
+            }
+            wordBox.appendChild(span);   
+            finalAnswerString += `<span style="color: ${span.style.color};">${answerWords[i]} </span>`;
+          }   
+            
+          document.getElementById('finalAnswer').innerHTML = finalAnswerString;      
+            
+          if (answer === expectedAnswer) {
+            setTimeout(() => {
+              showPopupProgress();       
+            }, 1000);    
+          } else { 
+            setTimeout(() => {
+              showPopupRetry();       
+            }, 1000);       
+          }
+        }
+
+        /*--------Correct Answer Function--------*/
+        
+        function showPopupProgress() { 
+          bgMusic.pause();    
+          popupBadangSuccess.style.visibility = 'visible';  
+          appleBasket.style.visibility = 'hidden';    
+          strongBar.style.visibility = 'visible';    
+          heartTree.style.visibility = 'hidden';    
+          heartBar.style.visibility = 'hidden';    
+          betul.style.visibility = 'visible';  
+          nextButton.style.visibility = 'visible';       
+          popupBadangProgress.style.visibility = 'visible';
+          appleProgress.style.visibility = 'visible';   
+          var correctAnswerSound = new Audio('sounds/correctAnswer.mp3');
+          correctAnswerSound.play();     
+          appleProgress.style.animation = 'applePopup 2s forwards';
+          setTimeout(() => {
+            appleProgress.style.animation = 'appleProgressInput 3s forwards';
+          }, 1000);       
+          setTimeout(() => {
+            const progressBar = document.querySelector('.progress-bar');
+            if(indexImage==0){
+                progressBar.style.width = '10%';   
+            }
+            else if(indexImage==1){
+                progressBar.style.width = '20%';   
+            }  
+            else if(indexImage==2){
+                progressBar.style.width = '30%';   
+            }  
+            else if(indexImage==3){
+                progressBar.style.width = '40%';   
+            }
+            else if(indexImage==4){
+                progressBar.style.width = '50%';   
+            }
+            else if(indexImage==5){
+                progressBar.style.width = '60%';   
+            }
+            else if(indexImage==6){
+                progressBar.style.width = '70%';   
+            }
+            else if(indexImage==7){
+                progressBar.style.width = '80%';   
+            }
+            else if(indexImage==8){
+                progressBar.style.width = '90%';   
+            }
+            else if(indexImage==9){
+                progressBar.style.width = '100%';   
+            }  
+            var levelUpSound = new Audio('sounds/levelUp.mp3');
+            levelUpSound.play();      
+          }, 4000);    
+        }
+        
+        function showPopupRetry() {  
+          bgMusic.pause();    
+          popupBadangFail.style.visibility = 'visible';        
+          appleBasket.style.visibility = 'hidden';    
+          heartBar.style.visibility = 'visible';    
+          heartTree.style.visibility = 'hidden';   
+          strongBar.style.visibility = 'hidden';     
+          salah.style.visibility = 'visible';       
+          popupBadangProgress.style.visibility = 'visible';
+          var incorrectAnswerSound = new Audio('sounds/awhSound.mp3');
+          incorrectAnswerSound.play();    
+          var pop = new Audio('sounds/pop.mp3');  
+          setTimeout(()=>{
+                pop.play();
+            },1500);      
+          checkHeart();    
+        }
+        
+        function hidePopupProgress(){
+            bgMusic.play();
+            appleBasket.style.visibility = 'visible';
+            heartBar.style.visibility = 'hidden';
+            strongBar.style.visibility = 'hidden';
+            heartTree.style.visibility = 'visible';
+            popupBadangProgress.style.visibility = 'hidden'; 
+            appleProgress.style.visibility = 'hidden';
+            betul.style.visibility = 'hidden';
+            salah.style.visibility = 'hidden';
+        }
+
+        var clickSound = new Audio('sounds/click2.wav');
+
+        nextButton.addEventListener('click', function() {
+          clickSound.play();         
+          indexImage++;        
+          if (indexImage >= buttonValues.length) {
+                gamesBox.style.visibility = 'hidden';   
+                window.location.href = 'badang-end.html';
+          }
+          nextButton.style.visibility = 'hidden'; 
+          popupBadangSuccess.style.visibility = 'hidden';
+          popupBadangFail.style.visibility = 'hidden';       
+          hidePopupProgress();    
+          selectedValues = [];
+            wordBox.textContent = ''; // Clear previous word box content
+            const values = buttonValues[indexImage][0];
+            createButtons(values, handleButtonClick);
+            startAnimationBadang();
+            showGamesBox();
+            showImages();
+            showMap();      
+        });
+
+        retryButton.addEventListener('click', function() {
+          clickSound.play();    
+          hidePopupProgress();    
+          indexImage;
+          popupBadangSuccess.style.visibility = 'hidden';
+          popupBadangFail.style.visibility = 'hidden';      
+          selectedValues = [];
+          wordBox.textContent = ''; // Clear previous word box content
+          const values = buttonValues[indexImage][0];
+          createButtons(values, handleButtonClick);
+          retryButton.style.visibility = 'hidden'; // Hide the next button again
+          buttonContainer.style.display = 'block';
+          wordBox.style.color = '';      
+          showGamesBox();    
+          showImages();      
+        });
+
+        // Initialize the first set of buttons
+        if (indexImage >= 0 && indexImage < buttonValues.length) {
+          const values = buttonValues[indexImage][0];
+          createButtons(values, handleButtonClick);
+        }
+
+        function playSound() {
+            var snd = new Audio('sounds/click1.mp3');
+            snd.play();
+        }
+        
+        function checkHeart(){
+          heartLeft--;
+          if(heartLeft==2){
+             heart3.style.visibility = 'hidden';
+             retryButton.style.visibility = 'visible';   
+             heartBar3.style.animation = "heartGone 3s forwards";  
+              
+          } 
+          else if(heartLeft==1){
+              heart2.style.visibility = 'hidden';
+              retryButton.style.visibility = 'visible'; 
+              heartBar2.style.animation = "heartGone 3s forwards";
+          } 
+          else{
+              heart1.style.visibility = 'hidden';
+              heartBar1.style.animation = "heartGone 3s forwards";
+              popUpRestart();    
+          }    
+        }
+        
+        function popUpRestart(){
+            setTimeout(function() {
+                 window.location.href = 'character.html';
+          }, 5000);    
+        }
+        
+        function highlightImage(){
+            setTimeout(() => {
+                q1.style.animation = 'shadowAnimation 3s infinite';
+                q2.style.animation = 'shadowAnimation 3s infinite';
+                q3.style.animation = 'shadowAnimation 3s infinite';
+                q4.style.animation = 'shadowAnimation 3s infinite';
+                q5.style.animation = 'shadowAnimation 3s infinite';
+                q6.style.animation = 'shadowAnimation 3s infinite';
+                q7.style.animation = 'shadowAnimation 3s infinite';
+                q8.style.animation = 'shadowAnimation 3s infinite';
+                q9.style.animation = 'shadowAnimation 3s infinite';
+                q10.style.animation = 'shadowAnimation 3s infinite';
+            }, 4000);  
+            setTimeout(() => {
+                q1.style.animationPlayState = 'paused';
+                q2.style.animationPlayState = 'paused';
+                q3.style.animationPlayState = 'paused';
+                q4.style.animationPlayState = 'paused';
+                q5.style.animationPlayState = 'paused';
+                q6.style.animationPlayState = 'paused';
+                q7.style.animationPlayState = 'paused';
+                q8.style.animationPlayState = 'paused';
+                q9.style.animationPlayState = 'paused';
+                q10.style.animationPlayState = 'paused';
+                setTimeout(() => {
+                    q1.style.animationPlayState = 'running';
+                    q2.style.animationPlayState = 'running';
+                    q3.style.animationPlayState = 'running';
+                    q4.style.animationPlayState = 'running';
+                    q5.style.animationPlayState = 'running';
+                    q6.style.animationPlayState = 'running';
+                    q7.style.animationPlayState = 'running';
+                    q8.style.animationPlayState = 'running';
+                    q9.style.animationPlayState = 'running';
+                    q10.style.animationPlayState = 'running';
+                }, 5000);
+            }, 1000);   
+        }      
+        
+        function playMusicBg(){
+            setTimeout(()=>{
+                 bgMusic.play();
+            },10);  
+        }        
+        
+        playMusicBg();
+    
+        
+    </script>
+</body>
+</html>
