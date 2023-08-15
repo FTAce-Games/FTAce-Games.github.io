@@ -430,30 +430,30 @@
 <body>
     <div class="container">
         <div class="achievement">
-            <img src="images/logo.png" class="logo">
-            <a href="character.html" class="home"><img src="images/home.png" alt=""></a>
+            <img src="logo.png" class="logo">
+            <a href="character.html" class="home"><img src="home.png" alt=""></a>
         </div>
         <img id="story-image" src="" alt="Story Image">
-        <img src="images/images_badang/badang_kuat_bubble.png" id="badang-strong-bubble">
-        <img src="images/images_badang/apple.png" id="apple1">
-        <img src="images/images_badang/apple.png" id="apple2">
-        <img src="images/images_badang/apple.png" id="apple3">
-        <img src="images/images_badang/apple.png" id="apple4">
-        <img src="images/images_badang/apple.png" id="apple5">
-        <img src="images/images_badang/apple.png" id="apple6">
-        <img src="images/images_badang/apple.png" id="apple7">
-        <img src="images/images_badang/apple.png" id="apple8">
-        <img src="images/images_badang/apple.png" id="apple9">
-        <img src="images/images_badang/apple.png" id="apple10">
+        <img src="badang_kuat_bubble.png" id="badang-strong-bubble">
+        <img src="apple.png" id="apple1">
+        <img src="apple.png" id="apple2">
+        <img src="apple.png" id="apple3">
+        <img src="apple.png" id="apple4">
+        <img src="apple.png" id="apple5">
+        <img src="apple.png" id="apple6">
+        <img src="apple.png" id="apple7">
+        <img src="apple.png" id="apple8">
+        <img src="apple.png" id="apple9">
+        <img src="apple.png" id="apple10">
         <div id="strong-bar">
             <div class="circle-badang">
-                <img src="images/images_badang/badang_kuat.png" class="badang-strong">
+                <img src="badang_kuat.png" class="badang-strong">
             </div>
             <div class="bar">
                 <div class="progress-bar"></div>
             </div> 
         </div>
-        <img src="images/images_badang/badang-talk.gif" id="badangTalk" alt="GIF image">
+        <img src="badang-talk.gif" id="badangTalk" alt="GIF image">
         <div id="sentence-intro">
             <p id="story-sentence"></p>
         </div>
@@ -462,19 +462,19 @@
     <script>
         const storyData = [
   {
-    image: 'images/images_badang/badang_bg_1.gif',
+    image: 'badang_bg_1.gif',
     sentence: 'Hai, nama saya Badang.'
   },
   {
-    image: 'images/images_badang/badang_bg_1.gif',
+    image: 'badang_bg_1.gif',
     sentence: 'Saya memerlukan 10 biji epal untuk menjadi kuat.'
   },
   {
-    image: 'images/images_badang/badang_bg_1.gif',
+    image: 'badang_bg_1.gif',
     sentence: 'Anda perlu bina ayat untuk mendapatkan 10 biji epal tersebut.'
   },
   {
-    image: 'images/images_badang/badang_bg_1.gif',
+    image: 'badang_bg_1.gif',
     sentence: 'Setiap ayat yang dibina akan diberikan satu biji epal.'
   }
 ];
@@ -510,7 +510,7 @@ function updateContent() {
     storyImageElement.src = page.image;
     storySentenceElement.textContent = page.sentence;
     strongBar.style.visibility = 'hidden';
-    badangTalk.src = "images/images_badang/badang-talk.gif";    
+    badangTalk.src = "badang-talk.gif";    
     if (pageIndex === 0) {
       speech.style.visibility = 'hidden';    
       apple1.style.visibility = 'hidden';
@@ -536,7 +536,7 @@ function updateContent() {
       storySentenceElement.style.animation = 'typing 2s steps(20, end) forwards, blink-caret 0.75s step-end infinite';    
       setTimeout(() => {
         storySentenceElement.style.animation = 'blink-caret 0.75s step-end infinite';
-        badangTalk.src = "images/images_badang/badang-stay.gif";  
+        badangTalk.src = "badang-stay.gif";  
       }, 2100);   
     }
     else if (pageIndex === 1) {
@@ -567,7 +567,7 @@ function updateContent() {
       storySentenceElement.style.animation = 'typing 2s steps(20, end) forwards, blink-caret 0.75s step-end infinite';    
       setTimeout(() => {
         storySentenceElement.style.animation = 'blink-caret 0.75s step-end infinite';
-        badangTalk.src = "images/images_badang/badang-stay.gif";  
+        badangTalk.src = "badang-stay.gif";  
       }, 2100);     
     }
     else if (pageIndex === 2) {  
@@ -585,7 +585,7 @@ function updateContent() {
       storySentenceElement.style.animation = 'typing 2s steps(20, end) forwards, blink-caret 0.75s step-end infinite';    
       setTimeout(() => {
         storySentenceElement.style.animation = 'blink-caret 0.75s step-end infinite';
-        badangTalk.src = "images/images_badang/badang-stay.gif";  
+        badangTalk.src = "badang-stay.gif";  
       }, 2100);     
     }
     else if (pageIndex === 3) {
@@ -604,7 +604,7 @@ function updateContent() {
       storySentenceElement.style.animation = 'typing 2s steps(20, end) forwards, blink-caret 0.75s step-end infinite';    
       setTimeout(() => {
         storySentenceElement.style.animation = 'blink-caret 0.75s step-end infinite'; 
-        badangTalk.src = "images/images_badang/badang-stay.gif";  
+        badangTalk.src = "badang-stay.gif";  
       }, 2100);     
       apple9.style.animation = 'toProgressBar 3s forwards';     
       setTimeout(() => {
